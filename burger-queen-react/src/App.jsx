@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import './App.css';
+import { useState } from 'react';// módulo necesario para utilizar estados
+import './App.css'; 
 import logo from './assets/logo.png';
-import axios from 'axios';
-
+import axios from 'axios';// modulo axios para la peticion http
+// declaro el componente login, que es un formulario de inicio de sesion 
 function Login() {
+  // aca se utilizan los hook (usestate), para declarar variables de estados.
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+// estas funciones son para manejar los estados del componente cuando hay cambios en el formulario. 
   const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+    setUsername(e.target.value);// se ejecutan al obtener el valor atrvez del event.
   };
 
   const handlePasswordChange = (e) => {
@@ -16,25 +17,27 @@ function Login() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();// se llama este evento para evitar que la página se recargue
     // hago la peticion http para hacer el login
     axios.post('http://localhost:8080/login', {
       email: username,
       password: password 
     })
     .then((response) => {
+      // Si la solicitud es exitosa, el token de acceso devuelto por el servidor se muestra en la consola
       console.log(response.data.accessToken);
       // guardar token en el local storage porque lo voy a necesitar para las otras vistas 
       // redirect
 
     })
     .catch((error) => {
+      // en caso de rechazar se muestra el error en la consola.
       console.log(error);
     });
   };
 
   console.log("username", username);
-  
+  // aca es lo que se renderiza para armar la interfaz de usuario
   return (
     <div className="container">
       <div>
