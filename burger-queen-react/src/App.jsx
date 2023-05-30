@@ -1,29 +1,77 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';// módulo necesario para utilizar estados
+import './App.css'; 
+import logo from './assets/logo.png';
+import axios from 'axios';// modulo axios para la peticion http
+// declaro el componente login, que es un formulario de inicio de sesion 
+function Login() {
+  // aca se utilizan los hook (usestate), para declarar variables de estados.
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+// estas funciones son para manejar los estados del componente cuando hay cambios en el formulario. 
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);// se ejecutan al obtener el valor atrvez del event.
+  };
 
-function ButtonG(){
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();// se llama este evento para evitar que la página se recargue
+    // hago la peticion http para hacer el login
+    axios.post('http://localhost:8080/login', {
+      email: username,
+      password: password 
+    })
+    .then((response) => {
+      // Si la solicitud es exitosa, el token de acceso devuelto por el servidor se muestra en la consola
+      console.log(response.data.accessToken);
+      // guardar token en el local storage porque lo voy a necesitar para las otras vistas 
+      // redirect
+
+    })
+    .catch((error) => {
+      // en caso de rechazar se muestra el error en la consola.
+      console.log(error);
+    });
+  };
+
+  console.log("username", username);
+  // aca es lo que se renderiza para armar la interfaz de usuario
   return (
-    <button>ingresa</button>
-  )
-}
-function ImgKat (){
-return (
-<div>
-<img src='https://i.imgur.com/MK3eW3As.jpg' alt='katherine'/>;
-</div>
-)
-} 
-
-function App() {
-  return (
-
+    <div className="container">
       <div>
-        <h1 className='titulo'>bienvenido mesero!</h1>
-        <ButtonG />
-        <ImgKat/> 
-        </div>
-        
+        <img src={logo} />
+      </div>
+
+      <div className='formLogin'>
+        <h2>Hola!</h2>
+        <form onSubmit={handleSubmit}>
+          <div className='loginItem'>
+            <label htmlFor="username">Usuario:</label>
+            <input
+              className='loginInput'
+              type="text"
+              id="username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+          </div>
+          <div className='loginItem'>
+            <label htmlFor="password">Contraseña:</label>
+            <input
+              className='loginInput'
+              type="password"
+              id="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <button type="submit">Iniciar sesión</button>
+        </form>
+      </div>
+    </div>
   )
 }
 
-export default App
+export default Login;
