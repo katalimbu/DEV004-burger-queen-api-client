@@ -1,35 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import logo from './assets/logo.png';
+import axios from 'axios';
 
-function App() {
-  const [count, setCount] = useState(0)
+function Login() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // hago la peticion http para hacer el login
+    axios.post('http://localhost:8080/login', {
+      email: username,
+      password: password 
+    })
+    .then((response) => {
+      console.log(response.data.accessToken);
+      // guardar token en el local storage porque lo voy a necesitar para las otras vistas 
+      // redirect
+
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+
+  console.log("username", username);
+  
   return (
-    <>
+    <div className="container">
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <img src={logo} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className='formLogin'>
+        <h2>Hola!</h2>
+        <form onSubmit={handleSubmit}>
+          <div className='loginItem'>
+            <label htmlFor="username">Usuario:</label>
+            <input
+              className='loginInput'
+              type="text"
+              id="username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+          </div>
+          <div className='loginItem'>
+            <label htmlFor="password">Contraseña:</label>
+            <input
+              className='loginInput'
+              type="password"
+              id="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <button type="submit">Iniciar sesión</button>
+        </form>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
-export default App
+export default Login;
