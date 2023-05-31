@@ -1,6 +1,6 @@
 import { useState } from 'react';// módulo necesario para utilizar estados
-import './App.css'; 
-import logo from './assets/logo.png';
+import './Login.css'; 
+import logo from '../../assets/logo.png';
 import axios from 'axios';// modulo axios para la peticion http
 // declaro el componente login, que es un formulario de inicio de sesion 
 function Login() {
