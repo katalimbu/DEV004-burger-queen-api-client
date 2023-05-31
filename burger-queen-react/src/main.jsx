@@ -8,8 +8,8 @@ import Breakfast from "./components/Products/Breakfast"
 
 const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <Login />
+    path: "/",
+    element: <Login/>
   },
   {
     path: "/breakfast",
