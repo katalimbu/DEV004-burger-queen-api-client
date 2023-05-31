@@ -24,6 +24,7 @@ function Login() {
       password: password 
     })
     .then((response) => {
+      localStorage.setItem('token', response.data.accessToken)
       // Si la solicitud es exitosa, el token de acceso devuelto por el servidor se muestra en la consola
       console.log(response.data.accessToken);
       // guardar token en el local storage porque lo voy a necesitar para las otras vistas 
@@ -67,7 +68,9 @@ function Login() {
               onChange={handlePasswordChange}
             />
           </div>
+          <div className='loginBtn'>
           <button type="submit">Iniciar sesión</button>
+          </div>
         </form>
       </div>
     </div>
