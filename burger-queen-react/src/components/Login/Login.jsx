@@ -1,12 +1,16 @@
 import { useState } from 'react';// módulo necesario para utilizar estados
-import './App.css'; 
-import logo from './assets/logo.png';
+import './Login.css'; 
+import logo from '../../assets/logo.png';
 import axios from 'axios';// modulo axios para la peticion http
+import { useNavigate } from "react-router-dom";
+
 // declaro el componente login, que es un formulario de inicio de sesion 
 function Login() {
   // aca se utilizan los hook (usestate), para declarar variables de estados.
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
 // estas funciones son para manejar los estados del componente cuando hay cambios en el formulario. 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);// se ejecutan al obtener el valor atrvez del event.
@@ -24,6 +28,8 @@ function Login() {
       password: password 
     })
     .then((response) => {
+      localStorage.setItem('token', response.data.accessToken);
+      navigate('/breakfast');
       // Si la solicitud es exitosa, el token de acceso devuelto por el servidor se muestra en la consola
       console.log(response.data.accessToken);
       // guardar token en el local storage porque lo voy a necesitar para las otras vistas 
@@ -67,7 +73,9 @@ function Login() {
               onChange={handlePasswordChange}
             />
           </div>
+          <div className='loginBtn'>
           <button type="submit">Iniciar sesión</button>
+          </div>
         </form>
       </div>
     </div>
