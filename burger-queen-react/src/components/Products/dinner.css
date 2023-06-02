@@ -1,0 +1,40 @@
+.motherContainer{
+    display: flex;
+    flex-direction: row;
+    align-items:center
+}
+.containerItems {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FDEDD5;
+    /* height: 30%; */
+    width: 30%;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+.logoImg {
+    display: flex;
+    width: 25%;
+    height: 25%;
+}
+.clientName{
+    background-color:#E1A23F ;
+    margin: 10px;
+    border-radius: 5px;
+}
+.btnGral{
+    background-color:#F6CF95 ;
+    padding:10px;
+    margin: 5px;
+    border-radius: 10px;
+
+}
+.btnItem {
+    background-color:#E1A23F ;
+    border-radius: 10px;
+    margin:5px;
+
+}
+
