@@ -36,7 +36,14 @@ function BtnDinner () {
   )
 }
 
- 
+function OrderReadyToKitchen (){
+  return (
+    <div className='containerItems'>
+      <h1>orden</h1>
+
+    </div>
+  )
+}
 
 const Dinner = () => {
   const [data, setData] = useState([]);
@@ -94,7 +101,9 @@ const Dinner = () => {
           </button>
         </div>
       ))}
+      
       </div>
+      <OrderReadyToKitchen/>
     </div>
     <div/>
     </div>
