@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <Dinner />
   }
 ]);
-
+// export const ApiUrl = 'http://localhost:8080'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}/>
