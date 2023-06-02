@@ -5,7 +5,7 @@ import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import "./index.css"
 import Login from "./components/Login/Login.jsx"
 import Breakfast from "./components/Products/Breakfast"
-import Dinner from "./components/Products/Dinner"
+// import Dinner from "./components/Products/Dinner"
 
 
 
@@ -18,10 +18,10 @@ const router = createBrowserRouter([
     path: "/breakfast",
     element: <Breakfast />
   },
-  {
-    path: "/dinner",
-    element: <Dinner />
-  }
+  // {
+  //   path: "/dinner",
+  //   element: <Dinner />
+  // }
 ]);
 // export const ApiUrl = 'http://localhost:8080'
 ReactDOM.createRoot(document.getElementById('root')).render(
