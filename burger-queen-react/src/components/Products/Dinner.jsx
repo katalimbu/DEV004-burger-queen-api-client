@@ -2,7 +2,6 @@ import  { useEffect, useState } from 'react';
 import axios from 'axios';
 import "./dinner.css"
 import logo from '../../assets/logo.png';
-
 function LogoImg (){
   return (
     <img src= {logo} className='logoImg'/>
@@ -45,6 +44,7 @@ function OrderReadyToKitchen (){
   )
 }
 
+
 const Dinner = () => {
   const [data, setData] = useState([]);
   const [typeProduct, setTypeProduct] = useState('Desayuno');
@@ -55,7 +55,7 @@ const Dinner = () => {
     const accessToken = localStorage.getItem('token'); // Obtener el token del localStorage
 
     const ListProducts = () => {
-      axios.get('http://localhost:8080/products', {
+      axios.get('http://localhost:8080/products', {// axios.get(`${API_URL}/product`, …
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
@@ -83,6 +83,8 @@ const filterProducts = data.filter((product)=> product.type === typeProduct)
   }
 
   return (
+    <div> <div>
+      {data.map(item => (
     // Etiqueta vacia que envuelve a todos los tags, solo se retorna un tag.
     <div> 
     <div className='motherContainer'>
@@ -102,62 +104,17 @@ const filterProducts = data.filter((product)=> product.type === typeProduct)
           </button>
         </div>
       ))}
+
+      </div>
       
       </div>
       <OrderReadyToKitchen/>
     </div>
     <div/>
+
     </div>
   );
 };
 
 export default Dinner;
 
-
-// import  { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import "./dinner.css"
-
-// function Dinner (){
-//     const [data, setData] = useState(null);
-  
-//     useEffect(() => {
-//       axios.get('http://localhost:8080/products')
-//         .then(response => {
-//           localStorage.setItem('token', response.data.accessToken);
-//           navigate('/breakfast');
-//           setData(response.data);
-//         })
-//         .catch(error => {
-//           console.error(error);
-//         });
-//     }, []);
-
-// return (
-//     <div>
-    
-//     <div className="containerDinner"> 
-//     <h1>Hola mesero </h1>
-//     <label>
-//     Nombre del cliente: <input name="clientName" />
-//   </label>
-//     <div className ="containerItemsDinner">
-//         <h2> Resumen del pedido:</h2>
-//         <btn>Hamburguesa Simple $10 </btn>
-//         <btn>Hamburguesa Doble $15 </btn>
-//         <btn>Papas fritas $5 </btn>
-//         <btn>Aros de cebolla $5 </btn>
-//         <btn>Agua chica $5  </btn>
-//         <btn>Agua grande $7 </btn>
-//         <btn>Gaseosa chica $5 </btn>
-//         <btn>Gaseosa grande $7 </btn>
-//     </div>
-//     <div className="orderDinner">
-//     </div>
-//     <btn className= "OrderReadyForKitchen">Enviar a cocina</btn>
-//     </div>
-//     </div>
-// )
-    
-// }
-// export default Dinner

@@ -1,11 +1,15 @@
 import  { useEffect, useState } from 'react';
 import axios from 'axios';
+import logo from '../../assets/logo.png';
+// import {ApiUrl} from '../../main';
 
 const Breakfast = () => {
   const [data, setData] = useState([]);
+  // necesito que dependiendo de lo que pinche, muestre lo que nececito
+  const [productType, setProductType] = useState('breakfast');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
+// hacer un filter de los productos filtrados 
   useEffect(() => {
     const accessToken = localStorage.getItem('token'); // Obtener el token del localStorage
 
@@ -36,10 +40,15 @@ const Breakfast = () => {
   if (error) {
     return <div>{error}</div>;
   }
+  const filterData = data.filter(product => product.type == productType);
 
   return (
     <div>
-      {data.map(item => (
+      <div>
+      <img src={logo} alt="Logo" />
+      <button onClick={()=>setProductType('Desayuno')}>Desayuno</button>
+      <button onClick={()=>setProductType('Almuerzo')}>Cena</button>
+      {filterData.map(item => (
         <div key={item.id}>
           {/* <h3>{item.name}</h3>
           <p>Precio: ${item.price}</p>
@@ -48,6 +57,7 @@ const Breakfast = () => {
           {/* <p>Fecha de entrada: {item.dateEntry}</p> */}
         </div>
       ))}
+      </div>
     </div>
   );
 };
