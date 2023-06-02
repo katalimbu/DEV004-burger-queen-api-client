@@ -47,6 +47,7 @@ function OrderReadyToKitchen (){
 
 const Dinner = () => {
   const [data, setData] = useState([]);
+  const [typeProduct, setTypeProduct] = useState('Desayuno');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -72,7 +73,7 @@ const Dinner = () => {
 
     ListProducts();
   }, []);
-
+const filterProducts = data.filter((product)=> product.type === typeProduct)
   if (isLoading) {
     return <div>Cargando...</div>;
   }
@@ -90,7 +91,7 @@ const Dinner = () => {
     <DinnerGeneralContainer/>
     <BtnBreakfast/>
     <BtnDinner/>
-      {data.map(item => (
+      {filterProducts.map(item => (
         <div key={item.id}>
           <button className='btnItem'>
           <h3 className='itemName'>{item.name}</h3>
