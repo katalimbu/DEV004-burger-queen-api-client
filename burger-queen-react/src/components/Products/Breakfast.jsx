@@ -1,7 +1,7 @@
 import  { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const breakfast = () => {
+const Breakfast = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,15 +41,15 @@ const breakfast = () => {
     <div>
       {data.map(item => (
         <div key={item.id}>
-          <h3>{item.name}</h3>
+          {/* <h3>{item.name}</h3>
           <p>Precio: ${item.price}</p>
           <img src={item.image} alt={item.name} />
-          <p>Tipo: {item.type}</p>
-          <p>Fecha de entrada: {item.dateEntry}</p>
+          <p>Tipo: {item.type}</p> */}
+          {/* <p>Fecha de entrada: {item.dateEntry}</p> */}
         </div>
       ))}
     </div>
   );
 };
 
-export default breakfast;
+export default Breakfast;
