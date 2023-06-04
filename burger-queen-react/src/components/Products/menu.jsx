@@ -1,17 +1,17 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../assets/logo.png';
-// import {ApiUrl} from '../../main';
+import "./menu.css"
 
 const Menu = () => {
   const [data, setData] = useState([]);
-  // necesito que dependiendo de lo que pinche, muestre lo que nececito
   const [productType, setProductType] = useState('breakfast');
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-// hacer un filter de los productos filtrados 
+
   useEffect(() => {
-    const accessToken = localStorage.getItem('token'); // Obtener el token del localStorage
+    const accessToken = localStorage.getItem('token');
 
     const ListProducts = () => {
       axios.get('http://localhost:8080/products', {
@@ -40,26 +40,61 @@ const Menu = () => {
   if (error) {
     return <div>{error}</div>;
   }
-  const filterData = data.filter(product => product.type == productType);
+
+  const filterData = data.filter(product => product.type === productType);
+
+  const handleProductSelection = (item) => {
+    const index = selectedProducts.findIndex(product => product.id === item.id);
+    if (index === -1) {
+      setSelectedProducts([...selectedProducts, item]);
+    } else {
+      const updatedProducts = [...selectedProducts];
+      updatedProducts.splice(index, 1);
+      setSelectedProducts(updatedProducts);
+    }
+  };
+  const clearOrderContainer = () => {
+    setSelectedProducts([]);
+  };
+
 
   return (
     <div>
       <div>
-      <img src={logo} alt="Logo" />
-      <button onClick={()=>setProductType('Desayuno')}>Desayuno</button>
-      <button onClick={()=>setProductType('Almuerzo')}>Almuerzo/Cena</button>
-      {filterData.map(item => (
-        <div key={item.id}>
-          <h3>{item.name}</h3>
-          <p>Precio: ${item.price}</p>
-          <img src={item.image} alt={item.name} />
-          <p>Tipo: {item.type}</p>
-          <p>Fecha de entrada: {item.dateEntry}</p>
+        <img src={logo} alt="Logo" />
+        <button className='btnBreakfast' onClick={() => { clearOrderContainer(); setProductType('Desayuno')}}>Desayuno</button>
+        <button className='btnDinner' onClick={() => {clearOrderContainer(); setProductType('Almuerzo')}}>Almuerzo/Cena</button>
+        {filterData.map(item => (
+          <div key={item.id}>
+            <button className='btnItem' onClick={() => handleProductSelection(item)}>
+              <h3>{item.name}</h3>
+              <p>Precio: ${item.price}</p>
+              {/* <img src={item.image} alt={item.name} /> */}
+              
+              <p>Tipo: {item.type}</p>
+            </button>
+          </div>
+        ))}
+        <div className='orderContainer'>
+          <h1>Orden</h1>
+          {selectedProducts.map(product => (
+            <div key={product.id}>
+              <h3>{product.name}</h3>
+              <p>Precio: ${product.price}</p>
+              <p>Tipo: {product.type}</p>
+            </div>
+          ))}
         </div>
-      ))}
       </div>
     </div>
   );
 };
 
 export default Menu;
+
+
+
+
+
+
+
