@@ -29,7 +29,7 @@ function Login() {
     })
     .then((response) => {
       localStorage.setItem('token', response.data.accessToken);
-      navigate('/breakfast');
+      navigate('/menu');
       // Si la solicitud es exitosa, el token de acceso devuelto por el servidor se muestra en la consola
       console.log(response.data.accessToken);
       // guardar token en el local storage porque lo voy a necesitar para las otras vistas 

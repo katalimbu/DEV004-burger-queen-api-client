@@ -3,7 +3,7 @@ import axios from 'axios';
 import logo from '../../assets/logo.png';
 // import {ApiUrl} from '../../main';
 
-const Breakfast = () => {
+const Menu = () => {
   const [data, setData] = useState([]);
   // necesito que dependiendo de lo que pinche, muestre lo que nececito
   const [productType, setProductType] = useState('breakfast');
@@ -47,7 +47,7 @@ const Breakfast = () => {
       <div>
       <img src={logo} alt="Logo" />
       <button onClick={()=>setProductType('Desayuno')}>Desayuno</button>
-      <button onClick={()=>setProductType('Almuerzo')}>Cena</button>
+      <button onClick={()=>setProductType('Almuerzo')}>Almuerzo/Cena</button>
       {filterData.map(item => (
         <div key={item.id}>
           <h3>{item.name}</h3>
@@ -62,4 +62,4 @@ const Breakfast = () => {
   );
 };
 
-export default Breakfast;
+export default Menu;
