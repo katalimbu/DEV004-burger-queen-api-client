@@ -70,11 +70,15 @@
 //     const lastSelectedProduct = selectedProducts[selectedProducts.length - 1];
 //     setSelectedOrderItems([...selectedOrderItems, lastSelectedProduct]);
 //   };
+
 //   const OrderReadyToKitchen = () => {
-//     axios.post('http://localhost:8080/orders',{
-//     headers: {
-//       Authorization: `Bearer ${accessToken}`
-//     }
+//     // guardamos acá el token para que este disponible en esta parte.
+//     const accessToken = localStorage.getItem('token');
+    
+//     axios.post('http://localhost:8080/orders', selectedOrderItems, {
+//       headers: {
+//         Authorization: `Bearer ${accessToken}`
+//       }
 //     })
 //       .then(response => {
 //         setPostOrderToKitchen(response.PostOrderToKitchen)
@@ -84,10 +88,11 @@
 //       })
 //       .catch(error => {
 //         console.error(error);
-//           setError('Error al obtener los datos');
-//           setIsLoading(false);
+//         setError('Error al obtener los datos');
+//         setIsLoading(false);
 //       });
-//     }
+//   };
+
 //   return (
 //     <div>
 //       <div>
@@ -99,7 +104,6 @@
 //             <button className='btnItem' onClick={() => processProductSelection(item)}>
 //               <h3>{item.name}</h3>
 //               <p>Precio: ${item.price}</p>
-//               {/* <img src={item.image} alt={item.name} /> */}
 //               <p>Tipo: {item.type}</p>
 //             </button>
 //           </div>
@@ -111,6 +115,7 @@
 //               <h3>{product.name}</h3>
 //               <p>Precio: ${product.price}</p>
 //               <p>Tipo: {product.type}</p>
+//               <p>Cantidad: {product.qty}</p>
 //               <button className='btnAddItem' onClick={addItemToOrder}>
 //                 <ion-icon name="add-circle-outline"></ion-icon>
 //               </button>
@@ -127,10 +132,6 @@
 // };
 
 // export default Menu;
-
-
-
-
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../assets/logo.png';
@@ -180,10 +181,9 @@ const Menu = () => {
 
   const processProductSelection = (item) => {
     const index = selectedProducts.findIndex(product => product.id === item.id);
-    // si el item seleccionado no está en el array selectedProducts se agrega a selectedProducs y selectedOrderItems.
     if (index === -1) {
       setSelectedProducts([...selectedProducts, item]);
-      setSelectedOrderItems([...selectedOrderItems, item]);
+      setSelectedOrderItems([...selectedOrderItems, { ...item, qty: 1 }]);
     } else {
       const updatedProducts = [...selectedProducts];
       updatedProducts.splice(index, 1);
@@ -199,13 +199,27 @@ const Menu = () => {
     setSelectedOrderItems([]);
   };
 
-  const addItemToOrder = () => {
-    const lastSelectedProduct = selectedProducts[selectedProducts.length - 1];
-    setSelectedOrderItems([...selectedOrderItems, lastSelectedProduct]);
+  const addItemToOrder = (productId) => {
+    const updatedOrderItems = selectedOrderItems.map(item => {
+      if (item.id === productId) {
+        return { ...item, qty: item.qty + 1 };
+      }
+      return item;
+    });
+    setSelectedOrderItems(updatedOrderItems);
   };
 
+  const eraseItemToOrder = (productId) => {
+    const updatedOrderItems = selectedOrderItems.map (item => {
+      if (item.id === productId) {
+        return {...item, qty: item.qty -1};
+      }
+      return item;
+    });
+    setSelectedOrderItems(updatedOrderItems);
+  }
+
   const OrderReadyToKitchen = () => {
-    // guardamos acá el token para que este disponible en esta parte.
     const accessToken = localStorage.getItem('token');
     
     axios.post('http://localhost:8080/orders', selectedOrderItems, {
@@ -237,7 +251,6 @@ const Menu = () => {
             <button className='btnItem' onClick={() => processProductSelection(item)}>
               <h3>{item.name}</h3>
               <p>Precio: ${item.price}</p>
-              {/* <img src={item.image} alt={item.name} /> */}
               <p>Tipo: {item.type}</p>
             </button>
           </div>
@@ -247,12 +260,13 @@ const Menu = () => {
           {selectedOrderItems.map(product => (
             <div key={product.id}>
               <h3>{product.name}</h3>
+              <p>Cantidad: {product.qty}</p>
               <p>Precio: ${product.price}</p>
               <p>Tipo: {product.type}</p>
-              <button className='btnAddItem' onClick={addItemToOrder}>
+              <button className='btnAddItem' onClick={() => addItemToOrder(product.id)}>
                 <ion-icon name="add-circle-outline"></ion-icon>
               </button>
-              <button className='eraseItem'>
+              <button className='eraseItem' onClick={() => eraseItemToOrder(product.id)}>
                 <ion-icon name="trash-outline"></ion-icon>
               </button>
             </div>
