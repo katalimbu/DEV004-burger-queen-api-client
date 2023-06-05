@@ -82,6 +82,8 @@ const Menu = () => {
               <h3>{product.name}</h3>
               <p>Precio: ${product.price}</p>
               <p>Tipo: {product.type}</p>
+              <button><ion-icon name="add-circle-outline"></ion-icon></button>
+              <button><ion-icon name="trash-outline"></ion-icon></button>
             </div>
           ))}
         </div>
