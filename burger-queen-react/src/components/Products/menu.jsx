@@ -111,23 +111,28 @@ const Menu = () => {
 
   return (
     <div>
-      <div>
+      <div className='motherContainer'>
         <img src={logo} alt="Logo" />
         <button className='btnBreakfast' onClick={() => { clearOrderContainer(); setProductType('Desayuno') }}>Desayuno</button>
         <button className='btnDinner' onClick={() => { clearOrderContainer(); setProductType('Almuerzo') }}>Almuerzo/Cena</button>
+       <>
+       <div className='containerItems'>
+       <h1>Menú:</h1>
         {filterProducts.map(item => (
-          <div key={item.id}>
+          <div  key={item.id}>
             <button className='btnItem' onClick={() => ProductSelection(item)}>
               <h3>{item.name}</h3>
               <p>Precio: ${item.price}</p>
               <p>Tipo: {item.type}</p>
             </button>
-          </div>
+            </div>
         ))}
+         </div>
+          </>
         <div className='orderContainer'>
-          <h1>Orden</h1>
+          <h1>Orden:</h1>
           {selectedOrderItems.map(product => (
-            <div key={product.id}>
+            <div key={product.id} className='orderedProduct'>
               <h3>{product.name}</h3>
               <p>Cantidad: {product.qty}</p>
               <p>Precio: ${product.price}</p>
