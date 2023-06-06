@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import "./menu.css"
 
 const Menu = () => {
+  // El hook useState define los estados iniciales
   const [products, setProducts] = useState([]);
   const [productType, setProductType] = useState('breakfast');
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -11,10 +12,11 @@ const Menu = () => {
   const [postOrderToKitchen, setPostOrderToKitchen] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  // useEffect carga la petición HTTP cuando se renderiza el componente por primera vez.
   useEffect(() => {
+    // se guarda el token en el almacenamiento local para que este disponible a lo largo del código.
     const accessToken = localStorage.getItem('token');
-
+    // Primera petición GET http con axios para traer los productos disponibles en la API
     const listProducts = () => {
       axios.get('http://localhost:8080/products', {
         headers: {
@@ -22,7 +24,7 @@ const Menu = () => {
         }
       })
         .then(response => {
-          setProducts(response.data); // Corrección: response.data en lugar de response.products
+          setProducts(response.data); 
           setIsLoading(false);
         })
         .catch(error => {
@@ -42,29 +44,25 @@ const Menu = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
+// separación de tipo desayuno y almuerzo.
   const filterProducts = products.filter(product => product.type === productType);
-
-  const processProductSelection = (item) => {
+// pinta los items con .qty 1 en el div de órden =>
+// busca si el item clickeado está o no en selectedProducts con el método findIndex, si no está,
+// actualiza el estado agregando el item seleccionado a selectedProducts y selectedItems.
+  const ProductSelection = (item) => {
     const index = selectedProducts.findIndex(product => product.id === item.id);
     if (index === -1) {
       setSelectedProducts([...selectedProducts, item]);
       setSelectedOrderItems([...selectedOrderItems, { ...item, qty: 1 }]);
-    } else {
-      const updatedProducts = [...selectedProducts];
-      updatedProducts.splice(index, 1);
-      setSelectedProducts(updatedProducts);
-      const updatedOrderItems = [...selectedOrderItems];
-      updatedOrderItems.splice(index, 1);
-      setSelectedOrderItems(updatedOrderItems);
+
     }
   };
-
+ // resetea la vista cada que se clickea en boton desayuno o almuerzo. 
   const clearOrderContainer = () => {
     setSelectedProducts([]);
     setSelectedOrderItems([]);
   };
-
+  // Incrementa en uno el .qty del item seleccionado en 1 utilizando map ??
   const addItemToOrder = (productId) => {
     const updatedOrderItems = selectedOrderItems.map(item => {
       if (item.id === productId) {
@@ -73,18 +71,24 @@ const Menu = () => {
       return item;
     });
     setSelectedOrderItems(updatedOrderItems);
+    setSelectedProducts(updatedOrderItems)
   };
 
   const eraseItemToOrder = (productId) => {
     const updatedOrderItems = selectedOrderItems.map(item => {
-      if (item.id === productId) {
-        return { ...item, qty: item.qty - 1 };
+      if (item.id !== productId) {
+        return item;
       }
-      return item;
-    });
+      if (item.qty === 0) {
+        return { ...item };
+      }
+      return { ...item, qty: item.qty - 1 };
+    }).filter(item => item.qty !== 0);
+  
     setSelectedOrderItems(updatedOrderItems);
+    setSelectedProducts(updatedOrderItems);
   };
-
+  
   const OrderReadyToKitchen = () => {
     const accessToken = localStorage.getItem('token');
 
@@ -94,7 +98,7 @@ const Menu = () => {
       }
     })
       .then(response => {
-        setPostOrderToKitchen(response.data); // Corrección: response.data en lugar de response.PostOrderToKitchen
+        setPostOrderToKitchen(response.data); 
         console.log(response.data);
         setIsLoading(false);
       })
@@ -113,7 +117,7 @@ const Menu = () => {
         <button className='btnDinner' onClick={() => { clearOrderContainer(); setProductType('Almuerzo') }}>Almuerzo/Cena</button>
         {filterProducts.map(item => (
           <div key={item.id}>
-            <button className='btnItem' onClick={() => processProductSelection(item)}>
+            <button className='btnItem' onClick={() => ProductSelection(item)}>
               <h3>{item.name}</h3>
               <p>Precio: ${item.price}</p>
               <p>Tipo: {item.type}</p>
