@@ -1,14 +1,29 @@
-.motherContainer{
+
+.containerGeneral {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+.motherContainer {
     display: flex;
     flex-direction: row;
     align-items:center
 }
+.containerBtnType {
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    align-content: space-around;
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+}
+
 .containerItems,.orderContainer {
     display:flex;
     flex-direction: column;
     align-items: center;
     background-color: #FDEDD5;
-    /* height: 30%; */
     width: 30%;
     border-radius: 20px;
     padding: 10px;
@@ -24,7 +39,7 @@
     margin: 10px;
     border-radius: 5px;
 }
-.btnGral{
+.btnGral {
     background-color:#F6CF95 ;
     padding:10px;
     margin: 5px;
@@ -35,6 +50,24 @@
     background-color:#E1A23F ;
     border-radius: 10px;
     margin:5px;
+    border: 5px;
+    padding: 5%;
 
 }
+.btnSend{
+    background-color: #8cc63f; 
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 100%; 
+}
+.btnBreakfast, .btnDinner{
+    background-color:#F6CF95 ;
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 100%; 
+    margin: 1%;   
+}
 
+
+   
+    

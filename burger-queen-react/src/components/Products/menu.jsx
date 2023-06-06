@@ -110,14 +110,16 @@ const Menu = () => {
   };
 
   return (
-    <div>
-      <div className='motherContainer'>
-        <img src={logo} alt="Logo" />
-        <button className='btnBreakfast' onClick={() => { clearOrderContainer(); setProductType('Desayuno') }}>Desayuno</button>
+    <div className='containerGeneral'>
+      <div className='containerBtnType'>
+      <button className='btnBreakfast' onClick={() => { clearOrderContainer(); setProductType('Desayuno') }}>Desayuno</button>
         <button className='btnDinner' onClick={() => { clearOrderContainer(); setProductType('Almuerzo') }}>Almuerzo/Cena</button>
-       <>
-       <div className='containerItems'>
-       <h1>Menú:</h1>
+      </div>
+      <div className='motherContainer'>
+        <img  className='logoImg' src={logo} alt="Logo" />
+        <>
+        <div className='containerItems'>
+        <h1>Menú:</h1>
         {filterProducts.map(item => (
           <div  key={item.id}>
             <button className='btnItem' onClick={() => ProductSelection(item)}>
@@ -137,17 +139,13 @@ const Menu = () => {
               <p>Cantidad: {product.qty}</p>
               <p>Precio: ${product.price}</p>
               <p>Tipo: {product.type}</p>
-              <button className='btnAddItem' onClick={() => addItemToOrder(product.id)}>
-                <ion-icon name="add-circle-outline"></ion-icon>
-              </button>
-              <button className='eraseItem' onClick={() => eraseItemToOrder(product.id)}>
-                <ion-icon name="trash-outline"></ion-icon>
-              </button>
+                <ion-icon name="add-circle-outline" className='btnAddItem' onClick={() => addItemToOrder(product.id)}></ion-icon>
+                <ion-icon name="trash-outline" className='eraseItem' onClick={() => eraseItemToOrder(product.id)}></ion-icon>
             </div>
           ))}
-          <button onClick={OrderReadyToKitchen}>Enviar Órden a cocina</button>
+          <button className='btnSend' onClick={OrderReadyToKitchen}>Enviar Órden a cocina</button>
         </div>
-      </div>
+      </div> 
     </div>
   );
 };
