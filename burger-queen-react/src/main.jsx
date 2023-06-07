@@ -5,8 +5,8 @@ import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import "./index.css"
 import Login from "./components/Login/Login.jsx"
 import Breakfast from "./components/Products/Breakfast"
-import ListOrders from "./components/Orders/ListOrders"
-// import Dinner from "./components/Products/Dinner"
+import Kitchen from "./components/Orders/Kitchen"
+import Waiter from "./components/Orders/Waiter"
 
 
 
@@ -20,13 +20,13 @@ const router = createBrowserRouter([
     element: <Breakfast />
   },
   {
-    path: "/orders",
-    element: <ListOrders />
+    path: "/kitchen",
+    element: <Kitchen />
   },
-  // {
-  //   path: "/dinner",
-  //   element: <Dinner />
-  // }
+  {
+    path: "/waiter",
+    element: <Waiter />
+  }
 ]);
 // export const ApiUrl = 'http://localhost:8080'
 ReactDOM.createRoot(document.getElementById('root')).render(
