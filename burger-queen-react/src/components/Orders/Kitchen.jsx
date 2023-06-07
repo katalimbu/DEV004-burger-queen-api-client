@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../assets/logo.png';
+import './kitchen.css'; 
 
 function ListOrders() {
   const [arrayOrders, setArrayOrders] = useState([]);
@@ -79,13 +80,13 @@ function ListOrders() {
           <div className='ordenNum' key={order.id}>
             <h3>{order.id}</h3>
             {order.products.map(item => (
-              <div key={item.product.id}>
+              <div className='orderBox' key={item.product.id}>
                 <p>cantidad: {item.qty}</p>
                 <p>nombre: {item.product.name}</p>
                 <p>status: {order.status}</p>
               </div>
             ))}
-            <button onClick={() => handleButtonClick(order.id)}>Listo</button>
+            <button className='kitchenBtn' onClick={() => handleButtonClick(order.id)}>Listo</button>
           </div>
         ))}
       </div>

@@ -1,0 +1,48 @@
+@media (min-width: 768px) and (max-width: 1200px) {
+  *{
+    font-family: 'Signika' ;
+  }
+    .container{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background: #FDEDD5;
+        border-radius: 30px;
+        flex-direction: row;
+
+  }
+    .kitchenForm{
+        display: flex;
+        justify-content: flex-end;
+        background-color: #FDEDD5;
+        padding: 100px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        border-radius: 20px;
+    }
+    h1{
+        
+        display: flex;
+        padding-top: 20%;
+        margin-top: 0;
+        background-color: #FFBD59;
+        align-items: flex-start;
+        
+    }
+    .ordenNum{
+        display: flex;
+        align-items: flex-end;
+        background: #FFBD59;
+        border-radius: 30px;
+    }
+    .orderBox{
+        display: flex;
+        background: #FFBD59;
+        border-radius: 30px;
+    }
+    .kitchenBtn{
+        display: flex;
+        text-align: center;
+
+    }
+  }
