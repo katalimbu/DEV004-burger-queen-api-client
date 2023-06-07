@@ -101,16 +101,32 @@ const Menu = () => {
   
   const OrderReadyToKitchen = () => {
     const accessToken = localStorage.getItem('token');
-
-    axios.post('http://localhost:8080/orders', selectedOrderItems, {
+    const orderData = {
+      userId: 1,
+      client: clientName,
+      products: selectedOrderItems.map(item => ({
+        qty: item.qty,
+        product: {
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          image: item.image,
+          type: item.type,
+          dateEntry: item.dateEntry
+        }
+      })),
+      status: "pending",
+      dataEntry: new Date().toISOString()
+    };
+    axios.post('http://localhost:8080/orders', orderData, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
     })
       .then(response => {
         setPostOrderToKitchen(response.data); 
-        alert('tu orden ha sido enviada a cocina');
-        console.log(response.data);
+        alert('Tu orden ha sido enviada a cocina exitosamente');
+        console.log('esto es lo que se envia a api',response.data);
         setIsLoading(false);
       })
       .catch(error => {
