@@ -5,6 +5,7 @@ import "./menu.css"
 
 const Menu = () => {
   // El hook useState define los estados iniciales
+
   const [products, setProducts] = useState([]);
   const [productType, setProductType] = useState('breakfast');
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -24,6 +25,7 @@ const Menu = () => {
         }
       })
         .then(response => {
+          console.log('esto es response.data',response.data)
           setProducts(response.data); 
           setIsLoading(false);
         })
@@ -113,10 +115,9 @@ const Menu = () => {
 
   return (
     <div className='containerGeneral'>
-       <img  className='logoImg' src={logo} alt="Logo" />
-       <h1 className='greeting'>Hola mesero!! elige tu menu:</h1>
+        <img  className='logoImg' src={logo} alt="Logo" />
+        <h1 className='greeting'>Hola mesero!! elige tu menu:</h1>
       <div className='containerBtnType'>
-     
       <button className='btnBreakfast' onClick={() => { clearOrderContainer(); setProductType('Desayuno') }}>Desayuno</button>
         <button className='btnDinner' onClick={() => { clearOrderContainer(); setProductType('Almuerzo') }}>Almuerzo/Cena</button>
       </div>
