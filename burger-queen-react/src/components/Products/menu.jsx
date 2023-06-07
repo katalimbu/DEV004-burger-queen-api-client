@@ -66,7 +66,7 @@ const Menu = () => {
   const addItemToOrder = (productId) => {
     const updatedOrderItems = selectedOrderItems.map(item => {
       if (item.id === productId) {
-        return { ...item, qty: item.qty + 1 };
+        return { ...item, qty: item.qty + 1 }; //qty va en objeto nuevo
       }
       return item;
     });
@@ -83,7 +83,7 @@ const Menu = () => {
         return { ...item };
       }
       return { ...item, qty: item.qty - 1 };
-    }).filter(item => item.qty !== 0);
+    }).filter(item => item.qty !== 0); 
   
     setSelectedOrderItems(updatedOrderItems);
     setSelectedProducts(updatedOrderItems);
@@ -111,15 +111,18 @@ const Menu = () => {
 
   return (
     <div className='containerGeneral'>
+       <img  className='logoImg' src={logo} alt="Logo" />
+       <h1 className='greeting'>Hola mesero!! elige tu menu:</h1>
       <div className='containerBtnType'>
+     
       <button className='btnBreakfast' onClick={() => { clearOrderContainer(); setProductType('Desayuno') }}>Desayuno</button>
         <button className='btnDinner' onClick={() => { clearOrderContainer(); setProductType('Almuerzo') }}>Almuerzo/Cena</button>
       </div>
       <div className='motherContainer'>
-        <img  className='logoImg' src={logo} alt="Logo" />
+        
         <>
         <div className='containerItems'>
-        <h1>Menú:</h1>
+        <h1 className='titleContainer'>Menú disponible:</h1>
         {filterProducts.map(item => (
           <div  key={item.id}>
             <button className='btnItem' onClick={() => ProductSelection(item)}>
@@ -132,7 +135,7 @@ const Menu = () => {
          </div>
           </>
         <div className='orderContainer'>
-          <h1>Orden:</h1>
+          <h1 className='titleContainer'>Tu órden aqui:</h1>
           {selectedOrderItems.map(product => (
             <div key={product.id} className='orderedProduct'>
               <h3>{product.name}</h3>
@@ -143,9 +146,9 @@ const Menu = () => {
                 <ion-icon name="trash-outline" className='eraseItem' onClick={() => eraseItemToOrder(product.id)}></ion-icon>
             </div>
           ))}
-          <button className='btnSend' onClick={OrderReadyToKitchen}>Enviar Órden a cocina</button>
         </div>
       </div> 
+      <button className='btnSend' onClick={OrderReadyToKitchen}>Enviar Órden a cocina</button>
     </div>
   );
 };
