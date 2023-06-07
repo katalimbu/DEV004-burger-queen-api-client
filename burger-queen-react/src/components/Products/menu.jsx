@@ -53,6 +53,7 @@ const Menu = () => {
     const index = selectedProducts.findIndex(product => product.id === item.id);
     if (index === -1) {
       setSelectedProducts([...selectedProducts, item]);
+      // El qty no está en el lugar correcto, debería estar en otro objeto, siguiendo lo que pide la API.
       setSelectedOrderItems([...selectedOrderItems, { ...item, qty: 1 }]);
 
     }
@@ -99,6 +100,7 @@ const Menu = () => {
     })
       .then(response => {
         setPostOrderToKitchen(response.data); 
+        alert('tu orden ha sido enviada a cocina');
         console.log(response.data);
         setIsLoading(false);
       })
@@ -132,10 +134,13 @@ const Menu = () => {
             </button>
             </div>
         ))}
-         </div>
+          </div>
           </>
         <div className='orderContainer'>
           <h1 className='titleContainer'>Tu órden aqui:</h1>
+          <label>
+        <input className='clientName' placeholder='nombre del cliente' name="myInput" />
+      </label>
           {selectedOrderItems.map(product => (
             <div key={product.id} className='orderedProduct'>
               <h3>{product.name}</h3>
@@ -146,6 +151,9 @@ const Menu = () => {
                 <ion-icon name="trash-outline" className='eraseItem' onClick={() => eraseItemToOrder(product.id)}></ion-icon>
             </div>
           ))}
+          <label>
+        <input className='orderTotalPrice' placeholder='Total: $' name="myInput" />
+      </label>
         </div>
       </div> 
       <button className='btnSend' onClick={OrderReadyToKitchen}>Enviar Órden a cocina</button>
