@@ -8,7 +8,7 @@ const Menu = () => {
 
   const [products, setProducts] = useState([]);
   const [productType, setProductType] = useState('breakfast');
-  const [clientName, setClientName] = useState('Nombre del cliente')
+  const [clientName, setClientName] = useState('Escribe nombre del cliente')
   const [selectedProducts, setSelectedProducts] = useState([]); 
   const [selectedOrderItems, setSelectedOrderItems] = useState([]);
   const [postOrderToKitchen, setPostOrderToKitchen] = useState([]);
@@ -147,7 +147,7 @@ const Menu = () => {
         <div className='orderContainer'>
           <h1 className='titleContainer'>Tu órden aqui:</h1>
         <input onChange={changeClientName} className='clientName' placeholder='nombre del cliente' name="myInput" value={clientName} />
-        <button onClick={saveClientName}>ok</button>
+        <button className='saveClientName' onClick={saveClientName}>Guardar Cliente</button>
           {selectedOrderItems.map(product => (
             <div key={product.id} className='orderedProduct'>
               <h3>{product.name}</h3>

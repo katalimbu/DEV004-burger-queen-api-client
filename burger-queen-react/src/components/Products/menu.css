@@ -64,11 +64,16 @@
     width: 90%;
     
 }
-.btnItem:hover {
+.saveClientName{
+    background-color: #9f2929;
+    color: #FDEDD5;
+    border-radius: 5px;
+}
+.btnItem:hover,.saveClientName:hover  {
     background-color: #8cc63f;
     color: #FDEDD5;
 }
-.btnAddItem, .eraseItem {
+.btnAddItem, .eraseItem, .saveClientName {
     cursor:pointer;
 }
 .btnSend{
