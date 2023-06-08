@@ -1,7 +1,13 @@
+/* flexbos eje principal y eje transversal (direccion de flexbox) */
+/* justify principal /align secundario */ 
+.nav {
+    display: flex;
+    flex-direction: row;
+}
 .greeting {
     color:#FDEDD5;
     font-weight: 600;
-    margin: 1%;
+  
 }
 .containerGeneral {
     display:flex;
