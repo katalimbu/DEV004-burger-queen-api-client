@@ -1,0 +1,70 @@
+@media (min-width: 768px) and (max-width: 1200px) {
+  *{
+    font-family: 'Signika' ;
+  }
+    .container{
+      display:flex;
+      align-items: center;
+      flex-direction: column;
+
+  }
+    .kitchenForm{
+      display: flex;
+      justify-content: flex-end;
+      background-color: #FDEDD5;
+      padding: 50px;
+      border-radius: 0 0 20px 20px;
+    }
+    .title{
+      background-color: #FFBD59;
+      font-weight: 600;
+      margin-bottom: 0px;
+      width: 347px;
+      border-radius: 20px 20px 0 0;
+    }
+    .logoImg {
+      display: flex;
+      width: 60%;
+      height: 60%;
+      margin: 1%;
+      
+  }
+    .ordenNum{
+      display: flex;
+      align-items: flex-end;
+      background: #FFBD59;
+      border-radius: 30px;
+    }
+    .orderBox{
+      display:flex;
+      flex-direction: row;
+      align-items:center;
+      width: 465px;
+      height: 50px;
+      padding: 5px;
+      margin: 5px;
+        /* display: flex;
+        background: #FFBD59;
+        border-radius: 30px; */
+    }
+    .kitchenBtn{
+      background-color:#FFBD59; 
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 50%;
+      cursor: pointer; 
+    }
+    .kitchenBtn:hover{
+      background-color:#FDEDD5;
+      color: #452109;
+    }
+
+.timeInfo {
+  margin-top: 20px;
+}
+
+.timeInfo p {
+  margin-bottom: 10px;
+}
+
+  }
