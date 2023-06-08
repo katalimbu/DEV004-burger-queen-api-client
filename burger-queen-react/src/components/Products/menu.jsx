@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../assets/logo.png';
 import "./menu.css"
+import moment from 'moment';
 
 const Menu = () => {
   // El hook useState define los estados iniciales
@@ -18,6 +19,8 @@ const Menu = () => {
   useEffect(() => {
     // se guarda el token en el almacenamiento local para que este disponible a lo largo del código.
     const accessToken = localStorage.getItem('token');
+    // const accesEmailCurrenUser = localStorage.getItem('userEmail')
+
     // Primera petición GET http con axios para traer los productos disponibles en la API
     const listProducts = () => {
       axios.get('http://localhost:8080/products', {
@@ -100,9 +103,13 @@ const Menu = () => {
   };
   
   const OrderReadyToKitchen = () => {
+
     const accessToken = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const formattedDateTime = moment().format('YYYY-MM-DD HH:mm');
+
     const orderData = {
-      userId: 1,
+      userId:userId,
       client: clientName,
       products: selectedOrderItems.map(item => ({
         qty: item.qty,
@@ -116,7 +123,7 @@ const Menu = () => {
         }
       })),
       status: "pending",
-      dataEntry: new Date().toISOString()
+      dataEntry: formattedDateTime,
     };
     axios.post('http://localhost:8080/orders', orderData, {
       headers: {
@@ -135,6 +142,7 @@ const Menu = () => {
         setIsLoading(false);
       });
   };
+ 
 
   return (
     <div className='containerGeneral'>
