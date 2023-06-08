@@ -1,0 +1,110 @@
+/* flexbos eje principal y eje transversal (direccion de flexbox) */
+/* justify principal /align secundario */ 
+.nav {
+    display: flex;
+    flex-direction: row;
+}
+.greeting {
+    color:#FDEDD5;
+    font-weight: 600;
+  
+}
+.containerGeneral {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+.motherContainer {
+    display: flex;
+    flex-direction: row;
+    align-items:center
+}
+.containerBtnType {
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    align-content:flex-end;
+    width: 30%;
+    padding: 5px;
+    margin: 5px;
+}
+
+.containerItems,.orderContainer {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FDEDD5;
+    width: 70%;
+    height: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+.logoImg {
+    display: flex;
+    width: 30%;
+    height: 30%;
+    margin: 1%;
+}
+.titleContainer{
+    font-size: 200%;
+}
+.clientName, .orderTotalPrice{
+    background-color:#E1A23F ;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5%;
+    font-size: 100%;
+    border: 0;
+}
+.btnItem{
+    cursor: pointer;
+}
+.btnItem,.orderedProduct {
+    background-color:#E1A23F ;
+    border-radius: 10px;
+    margin:5px;
+    border: 5px;
+    padding: 5%;
+    font-size: 150%;
+    width: 90%;
+    
+}
+.saveClientName{
+    background-color: #9f2929;
+    color: #FDEDD5;
+    border-radius: 5px;
+}
+.btnItem:hover,.saveClientName:hover  {
+    background-color: #8cc63f;
+    color: #FDEDD5;
+}
+.btnAddItem, .eraseItem, .saveClientName {
+    cursor:pointer;
+}
+.btnSend{
+    background-color: #8cc63f; 
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 200%;
+    cursor: pointer; 
+}
+.btnSend:hover {
+    background-color:#9f2929;
+    color: #FDEDD5;
+}
+.btnBreakfast, .btnDinner{
+   display: flex;
+    background-color:#9f2929 ;
+    color: #FDEDD5;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 200%; 
+    margin: 2%; 
+    cursor: pointer;  
+}
+.btnBreakfast:hover,.btnDinner:hover{
+    background-color: #E1A23F;
+    color: black;
+}
+    
