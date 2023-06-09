@@ -1,8 +1,21 @@
 /* @media (min-width: 768px) and (max-width: 1024px) { */
- .greeting{
- color:gray;
+  .bigContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+  }
+  .containerGreeting{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 20%;
+  }
+  .greetingLogin{
+ color:#FDEDD5;
  font-size: 50px;
- background-color: #FFBD59;
+ align-self: center;
+ 
  }
  .boxAndImg{
   display:flex;

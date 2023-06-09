@@ -49,11 +49,15 @@ function Login() {
   console.log("username", username);
   // aca es lo que se renderiza para armar la interfaz de usuario
   return (
-    <div className='generalContainer'>
+    <>
+    <div className='bigContainer'>
+    <div className='containerGreeting'>
+      <h1 className='greetingLogin'> Hola!</h1>
+      </div>
+   <div className='generalContainer'>
       <div className='boxAndImg'>
       <img className='logo' src={logo} />
         <form className='holaForm' onSubmit={handleSubmit}>
-        <h1 className='greeting'> Hola!</h1>
             <label className='label' htmlFor="username">Usuario:</label>
             <input
               className='loginInput'
@@ -74,7 +78,10 @@ function Login() {
             <button className='btnLogin' type="submit">Iniciar sesión</button>
         </form>
         </div> 
+        </div>
       </div>
+      </>
+
   )
 }
 
