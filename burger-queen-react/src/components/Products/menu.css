@@ -3,16 +3,20 @@
 .nav {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    align-self: center;
+    justify-content:baseline;
 }
 .greeting {
     color:#FDEDD5;
     font-weight: 600;
-  
 }
 .containerGeneral {
     display:flex;
     align-items: center;
     flex-direction: column;
+    align-content: center;
+    justify-content: center;
 }
 .motherContainer {
     display: flex;
@@ -88,10 +92,12 @@
     width: 90%;
     
 }
-.saveClientName{
+.saveClientName, .finalOrderPrice{
     background-color: #9f2929;
     color: #FDEDD5;
     border-radius: 5px;
+    padding: 5%;
+    margin: 2%;
 }
 .btnItem:hover,.saveClientName:hover  {
     background-color: #8cc63f;
@@ -121,6 +127,9 @@
     margin: 2%; 
     cursor: pointer;  
 }
+ 
+
+
 .btnBreakfast:hover,.btnDinner:hover{
     background-color: #E1A23F;
     color: black;
