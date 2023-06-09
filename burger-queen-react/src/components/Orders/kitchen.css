@@ -1,4 +1,4 @@
-@media (min-width: 768px) and (max-width: 1200px) {
+/* @media (min-width: 768px) and (max-width: 1200px) { */
   *{
     font-family: 'Signika' ;
   }
@@ -9,18 +9,24 @@
 
   }
     .kitchenForm{
-      display: flex;
-      justify-content: flex-end;
-      background-color: #FDEDD5;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       padding: 50px;
       border-radius: 0 0 20px 20px;
     }
-    .title{
+    .titleContainer{
+      display: flex;
+      flex-direction: row;
       background-color: #FFBD59;
-      font-weight: 600;
       margin-bottom: 0px;
       width: 347px;
-      border-radius: 20px 20px 0 0;
+      border-radius: 10px;
+    }
+    .title{
+     font-size: 80%;
+    }
+    .logoContainer{
+      flex-direction: row;
     }
     .logoImg {
       display: flex;
@@ -36,35 +42,31 @@
       border-radius: 30px;
     }
     .orderBox{
-      display:flex;
-      flex-direction: row;
-      align-items:center;
-      width: 465px;
-      height: 50px;
-      padding: 5px;
-      margin: 5px;
-        /* display: flex;
-        background: #FFBD59;
-        border-radius: 30px; */
+    
+      align-items: center;
+      width: 100%;
+      padding: 4px;
+      margin: 3px;
+      border-radius: 20px;
+    }
+    .items{
+      display: flex;
+      background-color: #FDEDD5;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 20px;
+      margin: 2%;
+      padding: 2%;
     }
     .kitchenBtn{
-      background-color:#FFBD59; 
+      background-color: #E1A23F;
       border-radius: 10px;
-      padding: 10px;
-      font-size: 50%;
-      cursor: pointer; 
+      margin: 6px;
+      border: 5px;
+      padding: 5%;
+      font-size: 150%;
+      width: 35%;
+      height: 15%;
+      
     }
-    .kitchenBtn:hover{
-      background-color:#FDEDD5;
-      color: #452109;
-    }
-
-.timeInfo {
-  margin-top: 20px;
-}
-
-.timeInfo p {
-  margin-bottom: 10px;
-}
-
-  }
+  /* } */
