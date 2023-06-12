@@ -99,7 +99,7 @@ function ListOrders() {// esto es un componente (los function algo)
         {filterOrder.map(order => (
           <div className='items' key={order.id}>
             <h2 className='orderBox'>Orden Nº {order.id}</h2>
-            <p className='orderBox'>Tiempo: { moment().diff(moment(order.dataEntry),'minutes')}</p>
+            <p className='orderBox'>Tiempo: { moment().diff(moment(order.dataEntry),'minutes')} minutos</p>
             <p className='orderBox'>Estado: {order.status}</p>
             {order.products.map(item => (
               <div className='orderBox' key={item.product.id}>

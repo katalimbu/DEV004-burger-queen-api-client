@@ -1,0 +1,70 @@
+*{
+    font-family: 'Signika' ;
+  }
+    .container{
+      display:flex;
+      align-items: center;
+      flex-direction: column;
+
+  }
+    .waiterForm{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 50px;
+      border-radius: 0 0 20px 20px;
+    }
+    .titleContainer{
+      display: flex;
+      flex-direction: row;
+      background-color: #FFBD59;
+      margin-bottom: 0px;
+      width: 347px;
+      border-radius: 10px;
+    }
+    .title{
+     font-size: 80%;
+    }
+    .logoContainer{
+      flex-direction: row;
+    }
+    .logoImg {
+      display: flex;
+      width: 60%;
+      height: 60%;
+      margin: 1%;
+      
+  }
+    .ordenNum{
+      display: flex;
+      align-items: flex-end;
+      background: #FFBD59;
+      border-radius: 30px;
+    }
+    .orderBox{
+    
+      align-items: center;
+      width: 100%;
+      padding: 4px;
+      margin: 3px;
+      border-radius: 20px;
+    }
+    .items{
+      display: flex;
+      background-color: #FDEDD5;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 20px;
+      margin: 2%;
+      padding: 2%;
+    }
+    .waiterBtn{
+      background-color: #E1A23F;
+      border-radius: 10px;
+      margin: 6px;
+      border: 5px;
+      padding: 5%;
+      font-size: 150%;
+      width: 45%;
+      height: 15%;
+      
+    }
