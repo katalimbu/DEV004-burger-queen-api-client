@@ -19,10 +19,7 @@
     "react-router-dom": "^6.12.1"
   },
   "devDependencies": {
-<<<<<<< Updated upstream
-=======
     "@esbuild/darwin-arm64": "^0.17.19",
->>>>>>> Stashed changes
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/react": "^18.0.28",
