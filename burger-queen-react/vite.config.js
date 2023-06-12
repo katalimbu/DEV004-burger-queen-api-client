@@ -7,7 +7,13 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+<<<<<<< Updated upstream
     include: ['**/*.test.jsx'],
     setupFiles: './tests/setup.js',
   },
+=======
+    setupFiles: './tests/setup.js',
+  },
+
+>>>>>>> Stashed changes
 })
