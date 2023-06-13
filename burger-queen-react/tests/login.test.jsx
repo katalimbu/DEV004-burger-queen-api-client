@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'; 
+import { render, screen, fireEvent, waitFor, getByText } from '@testing-library/react'; 
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import axios from 'axios';
@@ -12,8 +12,8 @@ import Login from '../src/components/Login/Login'
 const mockPostLogin = () => {
   const mock = new MockAdapter(axios);
   mock
-  .onPost('http://localhost:8080/login')
-  .reply ({
+  .onPost('http://localhost:8080')
+  .reply (200, {
     email: "grace.hopper@systers.xyz",
     password: 123456
   })
@@ -50,3 +50,43 @@ describe('Login', () => {
 })
 
 
+it('funcionalidad botón login',async () => {
+
+  mockPostLogin();
+  render(
+    <MemoryRouter>
+    <Login />
+    </MemoryRouter>
+  );
+  
+  
+  await waitFor(() => {
+    const LoginButtonElement = (screen.getByText.container, 'Iniciar sesión');
+    fireEvent.click(LoginButtonElement);
+  },{ timeout: 10000 });
+});
+
+
+
+
+// it('realiza la petición HTTP al hacer clic en el botón', async () => {
+//   vi.useFakeTimers();
+//   mockPostLogin();
+//   render(
+//     <MemoryRouter>
+//       <Login />
+//     </MemoryRouter>);
+//     vi.advanceTimersByTime(40000);
+
+//   // Obtén el botón del DOM utilizando alguno de los métodos proporcionados por testing-library/react, como getByText o getByRole.
+//   const loginBtnFound = screen.getByText('Iniciar sesión');
+
+//   // Simula el evento de clic en el botón utilizando la función fireEvent.
+//   fireEvent.click(loginBtnFound);
+
+//   // Espera a que se realice la petición HTTP utilizando waitFor y verifica que la petición sea correcta.
+//   await waitFor(() => {
+//     expect(mockAdapterLogin.history.post.length).toEqual(1);
+//     expect(mockAdapterLogin.history.post[0].url).toEqual('http://localhost:8080');
+//   });
+// });
