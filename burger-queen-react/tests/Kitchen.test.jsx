@@ -99,6 +99,7 @@ const findByText = (container, text) => {
   throw new Error(`Unable to find an element with the text: ${text}`);
 };
 
+
 describe('Kitchen', () => {
   it('renders title', () => {
     mockGet();
@@ -153,6 +154,56 @@ describe('Kitchen', () => {
       fireEvent.click(readyButtonElement);
     });
   });
+  it('manejar errores de axios get', async () => {
+    mockAdapter.onGet('http://localhost:8080/orders').reply(500);
+
+    render(<Kitchen />);
+
+    await waitFor(() => {
+      expect(screen.findByText('Error al cargar los pedidos')).toBeTruthy();
+    });
+  });
+
+  // it('manejo errores peticion patch', async () => {
+  //   mockAdapter.onPatch('http://localhost:8080/orders').reply(500);
+  
+  //   render(<Kitchen />);
+  
+  //   await waitFor(async () => {
+  //     const button = await screen.findByText('Listo', {}, { timeout: 5000 });
+  //     await fireEvent.click(button);
+  //   });
+    
+  
+  //   await waitFor(() => {
+  //     expect(screen.getByText('Error al actualizar el pedido')).toBeTruthy();
+  //   });
+  
+  // });
+  
+  
+  it('no muestra ningin mensaje por pedido', async () => {
+    mockAdapter.onGet('http://localhost:8080/orders').reply(200, []);
+
+    render(<Kitchen />);
+
+    await waitFor(() => {
+      const noOrdersMessage = screen.queryByText('No hay pedidos');
+      expect(noOrdersMessage).toBeNull();
+    });
+  });
+
+  // it('displays loading message', async () => {
+  //   mockAdapter.onGet('http://localhost:8080/orders').reply(200, []);
+  
+  //   render(<Kitchen />);
+  
+  //   await screen.findByText((content, element) => {
+  //     return content.includes('Cargando pedidos') && element.tagName.toLowerCase() === 'div';
+  //   });
+  // });
+  
+
 });
 
 
