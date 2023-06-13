@@ -1,4 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'; 
+import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
@@ -21,15 +22,7 @@ const mockPostLogin = () => {
 afterEach(() => {
   vi.useRealTimers();
 });
-// es una función génerica que busca que x elemento del DOM contenga x texto. 
-const findByText = (container, text) => {
-  const elements = Array.from(container.querySelectorAll('*'));
-  const element = elements.find(el => el.textContent === text);
-  if (element) {
-    return element;
-  }
-  throw new Error(`Unable to find an element with the text: ${text}`);
-};
+
 // guardamos el método mockAdapter que emula la respuesta de la petición HTTP. 
 const mockAdapterLogin = new MockAdapter(axios);
 // Adaptamos el método MockAdapter al tipo de petición HTTP.
@@ -39,8 +32,21 @@ mockAdapterLogin.onPost('http://localhost:8080/login').reply(200, {
   "role": "admin",
   "id": 2
 });
+// getByText es un método de la biblioteca testing-library/react, busca un elemento del DOM que contenga el texto que le establecimos.
+// toBeInTheDocument() es un método de la biblioteca de testing-library/jest-dom, comprueba que el elemento encontrado EXISTA en el DOM.
+// <MemoryRouter> componente que proviene de la biblioteca react-router-dom, sirve para emular el ruteador en el test, envuelve al componente a testear.
+describe('Login', () => {
+  it('renderea título', async () => {
+    mockPostLogin();
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
+    await waitFor(() => {
+      expect(screen.getByText('Hola!')).toBeInTheDocument();
+    });
+  });
+})
 
 
-
-
- 

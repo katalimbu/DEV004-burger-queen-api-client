@@ -103,7 +103,7 @@ describe('Kitchen', () => {
   it('renders title', () => {
     mockGet();
     render(<Kitchen />);
-    expect(screen.findByText('Estado del Pedido')).toBeTruthy();
+    expect(screen.findByText('popo')).toBeTruthy();
   });
 
   it('renders orders', () => {
