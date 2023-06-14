@@ -3,16 +3,20 @@
 .nav {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    align-self: center;
+    justify-content:baseline;
 }
 .greeting {
     color:#FDEDD5;
     font-weight: 600;
-  
 }
 .containerGeneral {
     display:flex;
     align-items: center;
     flex-direction: column;
+    align-content: center;
+    justify-content: center;
 }
 .motherContainer {
     display: flex;
@@ -28,13 +32,31 @@
     padding: 5px;
     margin: 5px;
 }
+.menuAndOrderContainer{
+    background-color:#F6CF95;
+    width: 70%;
+    height: fit-content;
+    display: grid;
+    align-items: center;
+    grid-template-columns:2fr 2fr;
+    min-height: fit-content;
+    padding: 5%;
+    margin:2%;
+    align-content: center;
+    border-radius: 20px;
+   
+}
 
 .containerItems,.orderContainer {
+    background-color: #FDEDD5;
+    min-width:fit-content;
+    min-height:100%;
+    margin: 5%;
     display:flex;
     flex-direction: column;
     align-items: center;
-    background-color: #FDEDD5;
-    width: 70%;
+    align-content: center;
+    align-self: center;
     height: 100%;
     border-radius: 20px;
     padding: 10px;
@@ -42,8 +64,8 @@
 }
 .logoImg {
     display: flex;
-    width: 30%;
-    height: 30%;
+    width: 20%;
+    height: 20%;
     margin: 1%;
 }
 .titleContainer{
@@ -70,10 +92,12 @@
     width: 90%;
     
 }
-.saveClientName{
+.saveClientName, .finalOrderPrice{
     background-color: #9f2929;
     color: #FDEDD5;
     border-radius: 5px;
+    padding: 5%;
+    margin: 2%;
 }
 .btnItem:hover,.saveClientName:hover  {
     background-color: #8cc63f;
@@ -103,6 +127,9 @@
     margin: 2%; 
     cursor: pointer;  
 }
+ 
+
+
 .btnBreakfast:hover,.btnDinner:hover{
     background-color: #E1A23F;
     color: black;

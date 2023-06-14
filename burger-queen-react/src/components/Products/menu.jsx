@@ -152,16 +152,15 @@ const Menu = () => {
 // html semantico 
   return (
     <div className='containerGeneral'>
+       <h1 className='greeting'>Hola mesero!! elige tu menu:</h1>
      <nav className='nav'>
       <img className='logoImg' src={logo} alt="Logo" />
-      <h1 className='greeting'>Hola mesero!! elige tu menu:</h1>
       <div className='containerBtnType'>
         <button className='btnBreakfast' onClick={() => { clearOrderContainer(); setProductType('Desayuno') }}>Desayuno</button>
         <button className='btnDinner' onClick={() => { clearOrderContainer(); setProductType('Almuerzo') }}>Almuerzo/Cena</button>
       </div>
       </nav>
-      <div className='motherContainer'>
-        <>
+     <div className='menuAndOrderContainer'>
           <div className='containerItems'>
             <h2 className='titleContainer'>Menú disponible:</h2>
             {filterProducts.map(item => (
@@ -174,7 +173,6 @@ const Menu = () => {
               </div>
             ))}
           </div>
-        </>
         <div className='orderContainer'>
           <h3 className='titleContainer'>Tu órden aqui:</h3>
           <input onChange={changeClientName} className='clientName' placeholder='nombre del cliente' name="myInput" value={clientName} />

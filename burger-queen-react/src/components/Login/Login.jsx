@@ -34,8 +34,7 @@ function Login() {
       localStorage.setItem('userEmail',response.data.user.email);
       localStorage.setItem('userId', response.data.user.id)
       console.log('esto es userId', response.data.user.id)
-      
-
+    
       // Si la solicitud es exitosa, el token de acceso devuelto por el servidor se muestra en la consola
       console.log(response.data.accessToken);
       // guardar token en el local storage porque lo voy a necesitar para las otras vistas 
@@ -47,20 +46,19 @@ function Login() {
       console.log(error);
     });
   };
-
   console.log("username", username);
   // aca es lo que se renderiza para armar la interfaz de usuario
   return (
-    <div className="container">
-      <div>
-        <img src={logo} />
+    <>
+    <div className='bigContainer'>
+    <div className='containerGreeting'>
+      <h1 className='greetingLogin'> Hola!</h1>
       </div>
-
-      <div className='formLogin'>
-        <h2>Hola!</h2>
-        <form onSubmit={handleSubmit}>
-          <div className='loginItem'>
-            <label htmlFor="username">Usuario:</label>
+   <div className='generalContainer'>
+      <div className='boxAndImg'>
+      <img className='logo' src={logo} />
+        <form className='holaForm' onSubmit={handleSubmit}>
+            <label className='label' htmlFor="username">Usuario:</label>
             <input
               className='loginInput'
               type="text"
@@ -68,9 +66,8 @@ function Login() {
               value={username}
               onChange={handleUsernameChange}
             />
-          </div>
-          <div className='loginItem'>
-            <label htmlFor="password">Contraseña:</label>
+            <br></br>
+            <label className='label' htmlFor="password">Contraseña:</label>
             <input
               className='loginInput'
               type="password"
@@ -78,13 +75,13 @@ function Login() {
               value={password}
               onChange={handlePasswordChange}
             />
-          </div>
-          <div className='loginBtn'>
-          <button type="submit">Iniciar sesión</button>
-          </div>
+            <button className='btnLogin' type="submit">Iniciar sesión</button>
         </form>
+        </div> 
+        </div>
       </div>
-    </div>
+      </>
+
   )
 }
 
