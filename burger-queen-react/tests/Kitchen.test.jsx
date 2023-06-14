@@ -3,6 +3,7 @@ import Kitchen from '../src/components/Orders/Kitchen';
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { MemoryRouter } from 'react-router-dom';
 
 const mockGet = () => {
   const mock = new MockAdapter(axios);
@@ -98,13 +99,19 @@ const findByText = (container, text) => {
   }
   throw new Error(`Unable to find an element with the text: ${text}`);
 };
-
-
 describe('Kitchen', () => {
-  it('renders title', () => {
+  it('renders title', async() => {
     mockGet();
-    render(<Kitchen />);
-    expect(screen.findByText('Estado del Pedido')).toBeTruthy();
+    render(
+      <MemoryRouter>
+    <Kitchen />
+    </MemoryRouter>
+    );
+    await waitFor(() => {
+      expect(screen.findByText('Estado del Pedido')).toBeTruthy();
+      // sigue estando incrrecto
+    
+   });
   });
 
   it('renders orders', () => {

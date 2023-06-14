@@ -1,8 +1,10 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import Kitchen from '../src/components/Orders/Kitchen';
+import Waiter from '../src/components/Orders/Waiter';
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { MemoryRouter } from 'react-router-dom';
+
 
 const mockGet = () => {
   const mock = new MockAdapter(axios);
@@ -99,17 +101,24 @@ const findByText = (container, text) => {
   throw new Error(`Unable to find an element with the text: ${text}`);
 };
 
-describe('Kitchen', () => {
-  it('renders title', () => {
+describe('Waiter', () => {
+  it('renders title', async() => {
     mockGet();
-    render(<Kitchen />);
-    expect(screen.findByText('Estado del Pedido')).toBeTruthy();
-  });
+    render(
+        <MemoryRouter>
+            <Waiter />
+        </MemoryRouter>
+    );
+    await waitFor(() => {
+        expect(screen.getByText('Estado de la Orden')).toBeTruthy();
+        // sgue estando incorrecto 
+    });
+});
 
   it('renders orders', () => {
     vi.useFakeTimers();
     mockGet();
-    render(<Kitchen />);
+    render(<Waiter />);
     vi.advanceTimersByTime(40000);
 
     waitFor(() => {
@@ -145,7 +154,7 @@ describe('Kitchen', () => {
   it('submit', () => {
     vi.useFakeTimers();
     mockGet();
-    render(<Kitchen />);
+    render(<Waiter />);
     vi.advanceTimersByTime(40000);
 
     waitFor(() => {
