@@ -4,6 +4,7 @@ import { describe, it, expect, afterEach, vi } from 'vitest';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import Login from '../src/components/Login/Login'
+import Menu from '../src/components/Products/menu'
 // Render se utiliza para emular la renderización de react y screen para acceder a elementos del DOM.
 // fireEvent simula eventos del DOM. waitFor espera a que ocurran el evento asincrónico
 // AfterEach se ejecuta despues de cada prueba. vi controla el tiempo de las pruebas.
@@ -50,23 +51,45 @@ describe('Login', () => {
 })
 
 
-it('funcionalidad botón login',async () => {
-
+it('funcionalidad botón login en status 200 de la petición http',async () => {
+  
   mockPostLogin();
   render(
     <MemoryRouter>
     <Login />
     </MemoryRouter>
   );
-  
-  
   await waitFor(() => {
-    const LoginButtonElement = (screen.getByText.container, 'Iniciar sesión');
+    const LoginButtonElement = screen.getByText('Iniciar sesión');
     fireEvent.click(LoginButtonElement);
-  },{ timeout: 10000 });
+  });
 });
 
-
+it('una vez que se clickea el boton Iniciar sesion y el status es 200, se renderea el componente Menu',async () => {
+  // mockea una respuesta positiva de la petición http post
+  mockPostLogin();
+  // renderiza el componente Login dentro del componente MemoryRouter para simular el ruteo.
+  render(
+    <MemoryRouter>
+    <Login />
+    </MemoryRouter>
+  );
+  // con el método waitfor avisamos que hay que esperar por una respuesta asíncrona.
+  await waitFor(() => {
+    // guardamos el botón donde se encuentra el 'iniciar sesion'
+    const LoginButtonElement = screen.getByText('Iniciar sesión');
+    // fireEvent simula el click sobre el boton Iniciar sesión.
+    fireEvent.click(LoginButtonElement);
+  // se mockea una respuesta http 200 nuevamente 
+    mockPostLogin();
+    // y se renderiza el componente Menu
+    render(
+      <MemoryRouter>
+      <Menu />
+      </MemoryRouter>
+  );
+  });
+});
 
 
 // it('realiza la petición HTTP al hacer clic en el botón', async () => {
