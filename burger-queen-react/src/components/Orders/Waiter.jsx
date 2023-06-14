@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../assets/logo.png';
-// import './waiter.css'; 
+import './waiters.css'; 
 
 function Waiter() {
   // estado para almacenar la lista de pedidos
@@ -42,7 +42,7 @@ function Waiter() {
     const accessToken = localStorage.getItem('token');
 // para actualizar el estado del pedido 
     axios.patch(`http://localhost:8080/orders/${orderId}`, {
-      status: "delivered", 
+      status: "delivered", // cambiar a delivering para la vista del mesero.
     }, {
       headers: {
         // 'Content-Type': 'multipart/form-data',// por defecto sin esto, es un json
@@ -78,22 +78,22 @@ function Waiter() {
 
   return (
     <div className='container'>
-      <div>
+      <div className='titleContainer'>
       <img className='logoImg' src={logo} alt="Logo" />
+      <h1 className='title'>Estado de la Orden</h1>
       </div>
-      <h1 className='title'>Estado del Pedido</h1>
-      <div className='kitchenForm'>
+      <div className='waiterForm'>
         {filterOrder.map(order => (
-          <div className='orderbox' key={order.id}>
-            <h2>{order.id}</h2>
+          <div className='items' key={order.id}>
+            <h2 className='orderBox'>Orden Nº {order.id}</h2>
+            <p className='orderBox'>Estado: {order.status}</p>
             {order.products.map(item => (
-              <div  key={item.product.id}>
-                <p>cantidad: {item.qty}</p>
-                <p>nombre: {item.product.name}</p>
-                <p>status: {order.status}</p>
+              <div className='orderBox' key={item.product.id}>
+                <p>Cantidad: {item.qty}</p>
+                <p>Nombre: {item.product.name}</p>
               </div>
             ))}
-            <button className='kitchenBtn' onClick={() => handleButtonClick(order.id)}>Listo</button>
+            <button className='waiterBtn' onClick={() => handleButtonClick(order.id)}>Entregar</button>
           </div>
         ))}
       </div>

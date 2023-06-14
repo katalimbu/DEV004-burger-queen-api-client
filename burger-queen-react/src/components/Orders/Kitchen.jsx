@@ -1,101 +1,11 @@
-// import { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import logo from '../../assets/logo.png';
-// import './kitchen.css'; 
-
-// function ListOrders() {
-//   const [arrayOrders, setArrayOrders] = useState([]);
-//   const [isLoading, setIsLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const [totalElapsedTime, setTotalElapsedTime] = useState(0); // Nuevo estado para el tiempo total
-
-//   useEffect(() => {
-//     const accessToken = localStorage.getItem('token');
-//     axios.get('http://localhost:8080/orders', {
-//       headers: {
-//         Authorization: `Bearer ${accessToken}`
-//       }
-//     })
-//       .then(response => {
-//         setArrayOrders(response.data);
-//         setIsLoading(false);
-//       })
-//       .catch(error => {
-//         console.error(error);
-//         setError('Error al obtener los datos');
-//         setIsLoading(false);
-//       });
-//   }, []);
-
-//   const handleButtonClick = (orderId) => { 
-//     const accessToken = localStorage.getItem('token');
-//     const startTime = new Date().getTime(); // Inicio del cronómetro
-
-//     axios.patch(`http://localhost:8080/orders/${orderId}`, {
-//       status: 'delivered'
-//     }, {
-//       headers: {
-//         Authorization: `Bearer ${accessToken}`
-//       }
-//     })
-//       .then(response => {
-//         const endTime = new Date().getTime(); // Fin del cronómetro
-//         const elapsedTime = endTime - startTime; // Tiempo transcurrido en milisegundos
-//         setTotalElapsedTime(elapsedTime); // Actualizar el estado con el tiempo total
-
-//         alert('El pedido ha sido entregado con éxito', response);
-//         const deliveredOrderIndex = arrayOrders.findIndex(order => order.id === orderId);
-//         if (deliveredOrderIndex !== -1) {
-//           const updatedOrders = [...arrayOrders];
-//           updatedOrders.splice(deliveredOrderIndex, 1);
-//           setArrayOrders(updatedOrders);
-//         }
-//         console.log(response);
-//       })
-//       .catch(error => {
-//         console.error(error);
-//         setError('Error al entregar el pedido');
-//         alert('Hubo un error al entregar el pedido. Por favor, inténtalo nuevamente.');
-//       });
-//   };
-
-//   const filterOrder = arrayOrders.filter(order => order.status === 'pending');
-
-//   return (
-//     <div className='container'>
-//       <div>
-//         <img className='logoImg' src={logo} alt='Logo' />
-//       </div>
-//       <h1 className='title'>Estado del Pedido</h1>
-//       <div className='kitchenForm'>
-//         {filterOrder.map(order => (
-//           <div className='orderbox' key={order.id}>
-//             <h2>{order.id}</h2>
-//             {order.products.map(item => (
-//               <div key={item.product.id}>
-//                 <p>cantidad: {item.qty}</p>
-//                 <p>nombre: {item.product.name}</p>
-//                 <p>status: {order.status}</p>
-//                 <p className='timeInfo'>Tiempo total: {totalElapsedTime} milisegundos</p>
-//               </div>
-//             ))}
-//             <button className='kitchenBtn' onClick={() => handleButtonClick(order.id)}>Listo</button>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default ListOrders;
-
-
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../assets/logo.png';
 import './kitchen.css'; 
+import moment from 'moment'; 
 
-function ListOrders() {
+
+function ListOrders() {// esto es un componente (los function algo)
   // estado para almacenar la lista de pedidos
   const [arrayOrders, setArrayOrders] = useState([]);
   // estado para rastrear si los datos se están cargando
@@ -103,9 +13,9 @@ function ListOrders() {
   // estado para rastrear si hay algún error
   const [error, setError] = useState(null);
 
-  useEffect(() => { // se ejecuta cuando se monta el componente
+  const getOrders = () =>{
     const accessToken = localStorage.getItem('token');
-//  Se pasa un token de autorización en el encabezado de la solicitud
+    //  Se pasa un token de autorización en el encabezado de la solicitud
     axios.get('http://localhost:8080/orders', { // para obtener la lista de pedidos
       headers: {
         Authorization: `Bearer ${accessToken}`
@@ -120,8 +30,18 @@ function ListOrders() {
         setError('Error al obtener los datos');
         setIsLoading(false); // isLoading en false para indicar que la carga ha finalizado.
       });
+  };
+  useEffect(() => {
+    // lo uso para actualizar la diferencia de tiempo entre que se hace la peticion get y el timpo actua
+    const interval = setInterval(() => {// se usa para actualizar algo cada x seg
+      getOrders();
+    }, 30000);// se actualiza cada 30 seg
+// esto se ejecuta cuando el compmnente se desmonta, entocnes asi cuando se sale, el intervalo se limpia y no se sigue ejecutando
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
-
+  
   if (isLoading) {
     return <div>Cargando...</div>;
   }
@@ -168,21 +88,23 @@ function ListOrders() {
 // se filtran los pedidos en arrayOrders para obtener solo aquellos con estado "pending"
   const filterOrder = arrayOrders.filter(order => order.status === "pending");
 
+  
   return (
     <div className='container'>
-      <div>
+      <div className='titleContainer'>
       <img className='logoImg' src={logo} alt="Logo" />
-      </div>
       <h1 className='title'>Estado del Pedido</h1>
+      </div>
       <div className='kitchenForm'>
         {filterOrder.map(order => (
-          <div className='orderbox' key={order.id}>
-            <h2>{order.id}</h2>
+          <div className='items' key={order.id}>
+            <h2 className='orderBox'>Orden Nº {order.id}</h2>
+            <p className='orderBox'>Tiempo: { moment().diff(moment(order.dataEntry),'minutes')} minutos</p>
+            <p className='orderBox'>Estado: {order.status}</p>
             {order.products.map(item => (
-              <div  key={item.product.id}>
-                <p>cantidad: {item.qty}</p>
-                <p>nombre: {item.product.name}</p>
-                <p>status: {order.status}</p>
+              <div className='orderBox' key={item.product.id}>
+                <p>Cantidad: {item.qty}</p>
+                <p>Nombre: {item.product.name}</p>
               </div>
             ))}
             <button className='kitchenBtn' onClick={() => handleButtonClick(order.id)}>Listo</button>
@@ -194,4 +116,3 @@ function ListOrders() {
 }
 
 export default ListOrders;
-

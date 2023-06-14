@@ -1,5 +1,4 @@
-/* @media (min-width: 768px) and (max-width: 1200px) { */
-  *{
+*{
     font-family: 'Signika' ;
   }
     .container{
@@ -8,7 +7,7 @@
       flex-direction: column;
 
   }
-    .kitchenForm{
+    .waiterForm{
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       padding: 50px;
@@ -58,15 +57,14 @@
       margin: 2%;
       padding: 2%;
     }
-    .kitchenBtn{
+    .waiterBtn{
       background-color: #E1A23F;
       border-radius: 10px;
       margin: 6px;
       border: 5px;
       padding: 5%;
       font-size: 150%;
-      width: 35%;
+      width: 45%;
       height: 15%;
       
     }
-  /* } */
