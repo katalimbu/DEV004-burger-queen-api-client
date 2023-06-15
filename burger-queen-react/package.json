@@ -8,9 +8,10 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest --coverage"
   },
   "dependencies": {
+    "@vitest/coverage-v8": "^0.32.0",
     "axios": "^1.4.0",
     "esbuild": "0.17.19",
     "moment": "^2.29.4",
