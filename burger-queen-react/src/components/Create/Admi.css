@@ -1,0 +1,34 @@
+.tableContainer{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    flex-direction: column;
+}
+.table {
+    background-color:#FFBD59;
+    width: 70%;
+  }
+.logoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #FDEDD5;
+}
+.img-fluid{
+    width: 15%;
+    margin-top: 1%;
+}
+.header{
+    margin-top: 5%;
+    color: #452109;
+}
+.btn-warning{
+    background-color: #FFBD59;
+    color: #452109;
+}
+.btn-warning:hover{
+    background-color: #8cc63f;
+    color: #FDEDD5;
+    cursor: pointer;
+}

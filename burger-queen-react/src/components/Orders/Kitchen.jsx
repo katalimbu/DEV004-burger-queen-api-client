@@ -32,6 +32,7 @@ function ListOrders() {// esto es un componente (los function algo)
       });
   };
   useEffect(() => {
+    getOrders();
     // lo uso para actualizar la diferencia de tiempo entre que se hace la peticion get y el timpo actua
     const interval = setInterval(() => {// se usa para actualizar algo cada x seg
       getOrders();
@@ -116,3 +117,11 @@ function ListOrders() {// esto es un componente (los function algo)
 }
 
 export default ListOrders;
+
+
+
+
+
+
+
+

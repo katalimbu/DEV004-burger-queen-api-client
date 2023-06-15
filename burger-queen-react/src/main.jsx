@@ -8,8 +8,7 @@ import Login from "./components/Login/Login.jsx"
 import Kitchen from "./components/Orders/Kitchen"
 import Waiter from "./components/Orders/Waiter"
 import Menu from "./components/Products/menu"
-// import Dinner from "./components/Products/Dinner"
-
+import Admi from "./components/Create/Admi"
 
 
 
@@ -29,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/waiter",
     element: <Waiter />
+  },
+  {
+    path: "/Admi",
+    element: <Admi />
   }
 ]);
 // export const ApiUrl = 'http://localhost:8080'
