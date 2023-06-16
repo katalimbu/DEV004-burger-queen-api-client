@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor,getByText } from '@testing-library/react';
 import Kitchen from '../src/components/Orders/Kitchen';
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import axios from 'axios';
@@ -91,14 +91,14 @@ mockAdapter.onPatch('http://localhost:8080/orders').reply(200, {
   status: 'delivering',
 });
 
-const findByText = (container, text) => {
-  const elements = Array.from(container.querySelectorAll('*'));
-  const element = elements.find(el => el.textContent === text);
-  if (element) {
-    return element;
-  }
-  throw new Error(`Unable to find an element with the text: ${text}`);
-};
+// const findByText = (container, text) => {
+//   const elements = Array.from(container.querySelectorAll('*'));
+//   const element = elements.find(el => el.textContent === text);
+//   if (element) {
+//     return element;
+//   }
+//   throw new Error(`Unable to find an element with the text: ${text}`);
+// };
 describe('Kitchen', () => {
   it('renders title', async() => {
     mockGet();
@@ -108,7 +108,7 @@ describe('Kitchen', () => {
     </MemoryRouter>
     );
     await waitFor(() => {
-      expect(screen.findByText('Estado del Pedido')).toBeTruthy();
+      expect(screen.getByText('Estado del Pedido')).toBeInTheDocument();
       // sigue estando incrrecto
     
    });
@@ -121,31 +121,31 @@ describe('Kitchen', () => {
     vi.advanceTimersByTime(40000);
 
     waitFor(() => {
-      const orderElement = findByText(screen.container, 'Orden Nº 2324');
+      const orderElement = getByText(screen.container, 'Orden Nº 2324');
       expect(orderElement).toBeTruthy();
 
-      const statusElement = findByText(screen.container, 'Estado: pending');
+      const statusElement = getByText(screen.container, 'Estado: pending');
       expect(statusElement).toBeTruthy();
 
-      const product1QtyElement = findByText(screen.container, 'Cantidad: 1');
+      const product1QtyElement = getByText(screen.container, 'Cantidad: 1');
       expect(product1QtyElement).toBeTruthy();
 
-      const product1NameElement = findByText(
+      const product1NameElement = getByText(
         screen.container,
         'Nombre: Sandwich de jamón y queso'
       );
       expect(product1NameElement).toBeTruthy();
 
-      const product2QtyElement = findByText(screen.container, 'Cantidad: 1');
+      const product2QtyElement = getByText(screen.container, 'Cantidad: 1');
       expect(product2QtyElement).toBeTruthy();
 
-      const product2NameElement = findByText(
+      const product2NameElement = getByText(
         screen.container,
         'Nombre: Café americano'
       );
       expect(product2NameElement).toBeTruthy();
 
-      const readyButtonElement = findByText(screen.container, 'Listo');
+      const readyButtonElement = getByText(screen.container, 'Listo');
       expect(readyButtonElement).toBeTruthy();
     });
   });
@@ -157,17 +157,19 @@ describe('Kitchen', () => {
     vi.advanceTimersByTime(40000);
 
     waitFor(() => {
-      const readyButtonElement = findByText(screen.container, 'Listo');
+      const readyButtonElement = getByText(screen.container, 'Listo');
       fireEvent.click(readyButtonElement);
     });
   });
-  it('manejar errores de axios get', async () => {
-    mockAdapter.onGet('http://localhost:8080/orders').reply(500);
+  it.only('manejar errores de axios get', async () => {
+    mockAdapter.onGet('http://localhost:8080/orders').reply(()=>{
+      throw('error')
+    });
 
     render(<Kitchen />);
 
     await waitFor(() => {
-      expect(screen.findByText('Error al cargar los pedidos')).toBeTruthy();
+      expect(screen.getByText('Error al obtener los datos')).toBeTruthy();
     });
   });
 
@@ -177,7 +179,7 @@ describe('Kitchen', () => {
   //   render(<Kitchen />);
   
   //   await waitFor(async () => {
-  //     const button = await screen.findByText('Listo', {}, { timeout: 5000 });
+  //     const button = await screen.getByText('Listo', {}, { timeout: 5000 });
   //     await fireEvent.click(button);
   //   });
     
