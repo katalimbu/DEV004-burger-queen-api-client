@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor, getByText } from '@testing-library/react'; 
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'; 
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect, afterEach, vi } from 'vitest';
 import axios from 'axios';
