@@ -17,15 +17,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.12.1"
-
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
-
-
-  },
-  "devDependencies": {
     "@esbuild/darwin-arm64": "^0.17.19",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
