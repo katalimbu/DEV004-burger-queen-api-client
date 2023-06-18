@@ -1,9 +1,9 @@
-import React from "react";
-import { deleteWorkers } from './Admi';
+import { PropTypes } from 'prop-types';
 
-const WorkersTable = ({ id, email, role }) => {
+//esta es el dibujo de workerlist(la fila)
+const WorkersTable = ({ onDelete, id, email, role }) => {
   const handleDeleteWorker = () => {
-    deleteWorkers(id);
+    onDelete(id);
   };
 
   return (
@@ -21,6 +21,13 @@ const WorkersTable = ({ id, email, role }) => {
       </td>
     </tr>
   );
+};
+// para todos los componentes que reciben props debo definir su tipo, y si son requeridos o no 
+WorkersTable.propTypes = {
+  id: PropTypes.number.isRequired,
+  email: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired
 };
 
 export default WorkersTable;
