@@ -1,9 +1,8 @@
-
-import logo from '../../assets/logo.png';
 import { useState, useEffect } from 'react';
 import './Edit.css';
 import axios from 'axios';
 import { useParams } from "react-router";
+import EditForm  from "./EditForm"
 
 
 const Edit = () => {
@@ -62,45 +61,17 @@ const Edit = () => {
   };
 
   return( 
-    <>
-     <div className='mainContainer'>
-      <div>
-        <img src={logo} className="logoEdit" alt="Logo"></img>
-      </div> 
-
-      <div className='container'>
-        <h1 className="editheader">¿Algo cambio?</h1>
-
-        <form className='formEdit'  onSubmit={handleButtonClick}>
-          <label>Correo</label>
-          <input 
-            type="text"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <label>Cargo</label>
-          <select name="role" onChange={handleRoleChange} value={role}>
-            <option value="admin">Administrador</option>
-            <option value="waiter">Mesero</option>
-            <option value="chef">Chef</option>
-          </select>
-  
-          <label>Contraseña</label>
-          <input 
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          
-          <button className='btnEdit' type="submit">Guardar</button>
-        </form>
-      </div>
-     </div>
-    </>
-  );
-};
+    <EditForm  
+      password={password}
+      email = {email}
+      role = {role}
+      textButton = {'Guardar'}
+      handleButtonClick = {handleButtonClick}
+      handlePasswordChange = {(e) => setPassword(e.target.value)}
+      handleRoleChange = {handleRoleChange}
+      handleEmailChange = {(e) => setEmail(e.target.value)}
+    />
+      )
+     };
 
 export default Edit;

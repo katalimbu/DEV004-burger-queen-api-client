@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './admi.css'; 
 import logo from '../../assets/logo.png';
 import WorkerList from "./WorkerList";
