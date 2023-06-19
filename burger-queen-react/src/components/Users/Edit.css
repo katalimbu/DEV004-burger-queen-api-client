@@ -1,0 +1,28 @@
+.mainContainer{
+  display: grid;
+  grid-template-columns: 35% 65%;
+  margin: 10%;
+}
+
+.logoEdit {
+  width: -webkit-fill-available;
+}
+
+.container {
+  background-color:#FDEDD5;
+  flex-direction: column;
+  padding: 10%;
+  justify-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.formEdit {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+}

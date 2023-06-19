@@ -9,6 +9,7 @@ import Kitchen from "./components/Orders/Kitchen"
 import Waiter from "./components/Orders/Waiter"
 import Menu from "./components/Products/menu"
 import Admi from "./components/Users/Admi"
+import Edit from "./components/Users/Edit"
 
 
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/Admi",
     element: <Admi />
+  },
+  {
+    path: "/Edit/:id",
+    element: <Edit />
   }
 ]);
 // export const ApiUrl = 'http://localhost:8080'
