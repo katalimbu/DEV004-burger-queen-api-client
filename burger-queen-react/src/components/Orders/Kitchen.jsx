@@ -24,11 +24,14 @@ function ListOrders() {// esto es un componente (los function algo)
       .then(response => {//  Si la solicitud es exitosa, se actualiza el estado 
         setArrayOrders(response.data);
         setIsLoading(false);
+        console.log('estoy en then')
       })
+   
       .catch(error => {
         console.error(error);
         setError('Error al obtener los datos');
         setIsLoading(false); // isLoading en false para indicar que la carga ha finalizado.
+        console.log('estoy en catch')
       });
   };
   useEffect(() => {

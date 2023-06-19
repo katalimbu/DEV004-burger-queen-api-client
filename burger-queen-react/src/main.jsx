@@ -8,7 +8,7 @@ import Login from "./components/Login/Login.jsx"
 import Kitchen from "./components/Orders/Kitchen"
 import Waiter from "./components/Orders/Waiter"
 import Menu from "./components/Products/menu"
-import Admi from "./components/Create/Admi"
+import Admi from "./components/Users/Admi"
 
 
 

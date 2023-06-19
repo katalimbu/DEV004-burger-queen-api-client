@@ -12,7 +12,6 @@ const Menu = () => {
   const [clientName, setClientName] = useState('Escribe nombre del cliente');
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedOrderItems, setSelectedOrderItems] = useState([]);
-  const [postOrderToKitchen, setPostOrderToKitchen] = useState([]);
   const [finalOrderPrice, setFinalOrderPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -137,7 +136,6 @@ const Menu = () => {
       }
     })
       .then(response => {
-        setPostOrderToKitchen(response.data);
         alert('Tu orden ha sido enviada a cocina exitosamente');
         console.log('esto es lo que se envia a api', response.data);
         setIsLoading(false);
