@@ -2,12 +2,14 @@ import { useState } from 'react';
 import './Edit.css';
 import axios from 'axios';
 import EditForm from "./EditForm";
+import { useNavigate } from "react-router-dom";
 
 const NewUser = () => {
   
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleRoleChange = (e) => {
     setRole(e.target.value);
@@ -28,7 +30,7 @@ const NewUser = () => {
     })
       .then(() => {
         alert('Los cambios han sido guardados con éxito');
-        
+        navigate('/Admi');
       })
       .catch(() => {
         alert('Hubo un error al guardar los cambios. Por favor, inténtalo nuevamente.');

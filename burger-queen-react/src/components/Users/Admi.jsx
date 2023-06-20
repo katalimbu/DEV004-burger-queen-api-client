@@ -3,12 +3,15 @@ import './Admi.css';
 import WorkerList from './WorkerList';
 import NewUser from './createUser'
 import logo from '../../assets/logo.png';
+import { useNavigate } from "react-router-dom";
+
 
 const Admi = () => {
   const [showNewUser, setShowNewUser] = useState(false);
-
+  const navigate = useNavigate();
   const handleNewUser = () => {
     setShowNewUser(true);
+    navigate('/newuser');
   };
 
   return (
@@ -34,28 +37,4 @@ const Admi = () => {
 
 export default Admi;
 
-// este es el componente principal.
-// const Admi = () => {
-//   const handleNewUser () => {
-
-//   }
- 
-//   return (
-//     <>
-//       <div className="logoContainer">
-//         <img src={logo} className="img-fluid" alt="Logo"></img>
-//         <h1 className="header">Trabajadores Burguer Queen</h1>
-//       </div>
-//       <div className="tableContainer">
-//         <WorkerList />
-        
-//         <button type="button" className="btn btn-warning" onClick={handleNewUser}>
-//           Agregar nuevo trabajador
-//         </button>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Admi;
 
