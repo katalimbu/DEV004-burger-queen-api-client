@@ -20,7 +20,7 @@ const Edit = () => {
   useEffect(() => {
     const accessToken = localStorage.getItem('token');
     //  Se pasa un token de autorización en el encabezado de la solicitud
-    axios.get(`http://localhost:8080/users/${id}`, { // para obtener la lista de pedidos
+    axios.get(`http://localhost:8080/users/${id}`, { 
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
