@@ -10,6 +10,8 @@ import Waiter from "./components/Orders/Waiter"
 import Menu from "./components/Products/menu"
 import Admi from "./components/Users/Admi"
 import Edit from "./components/Users/Edit"
+import CreateUser from "./components/Users/createUser"
+
 
 
 
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/Edit/:id",
     element: <Edit />
+  },
+  {
+    path:"/newuser",
+    element: <CreateUser />
   }
 ]);
 // export const ApiUrl = 'http://localhost:8080'

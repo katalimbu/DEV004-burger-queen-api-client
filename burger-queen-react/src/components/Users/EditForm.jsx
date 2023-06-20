@@ -1,5 +1,3 @@
-
-
 import logo from '../../assets/logo.png';
 import PropTypes from 'prop-types';
 
@@ -8,6 +6,7 @@ export default function EditForm({
   email,
   role,
   textButton,
+  titleText,
   handleButtonClick,
   handlePasswordChange,
   handleRoleChange,
@@ -20,7 +19,7 @@ export default function EditForm({
       </div>
 
       <div className='container'>
-        <h1 className="editheader">¿Algo cambió?</h1>
+        <h1 className="editheader">{titleText}</h1>
 
         <form className='formEdit' onSubmit={handleButtonClick}>
           <label>Correo</label>
@@ -33,6 +32,7 @@ export default function EditForm({
 
           <label>Cargo</label>
           <select name="role" onChange={handleRoleChange} value={role}>
+          <option value="elige tu rol">Elige el rol </option>
             <option value="admin">Administrador</option>
             <option value="waiter">Mesero</option>
             <option value="chef">Chef</option>
@@ -44,6 +44,7 @@ export default function EditForm({
             id="password"
             value={password}
             onChange={(e) => handlePasswordChange(e.target.value)}
+            
           />
 
           <button className='btnEdit' type="submit">{textButton}</button>
@@ -58,6 +59,7 @@ EditForm.propTypes = {
   role: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   textButton: PropTypes.string.isRequired,
+  titleText: PropTypes.string.isRequired,
   handleButtonClick: PropTypes.func.isRequired,
   handlePasswordChange: PropTypes.func.isRequired,
   handleRoleChange: PropTypes.func.isRequired,
