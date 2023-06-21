@@ -7,13 +7,13 @@ import Login from "./components/Login/Login.jsx"
 
 import Kitchen from "./components/Orders/Kitchen"
 import Waiter from "./components/Orders/Waiter"
-import Menu from "./components/Products/menu"
+import Menu from "./components/Menu/menu"
 import Admi from "./components/Users/Admi"
 import Edit from "./components/Users/Edit"
 import CreateUser from "./components/Users/createUser"
-
-
-
+import CreateProduct from "./components/Products/CreateProduct"
+import EditProduct from "./components/Products/EditProduct"
+import AdmiProduct from "./components/Products/AdmiProduct"
 
 const router = createBrowserRouter([
   {
@@ -43,6 +43,18 @@ const router = createBrowserRouter([
   {
     path:"/newuser",
     element: <CreateUser />
+  },
+  {
+    path:"/newproduct",
+    element: <CreateProduct />
+  },
+  {
+    path: "/editproduct/:id",
+    element: <EditProduct />
+  },
+  {
+    path: "/admiproduct",
+    element: <AdmiProduct />
   }
 ]);
 // export const ApiUrl = 'http://localhost:8080'

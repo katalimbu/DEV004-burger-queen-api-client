@@ -1,7 +1,7 @@
 import logo from '../../assets/logo.png';
 import PropTypes from 'prop-types';
 
-export default function productForm({
+export default function ProductForm({
   name,
   price,
   image,
@@ -36,7 +36,7 @@ export default function productForm({
 
           <label>Price</label>
           <input 
-            type="price"
+            type="number"
             id="price"
             value={price}
             onChange={(e) => handlePriceChange(e.target.value)}
@@ -44,7 +44,7 @@ export default function productForm({
 
           <label>Imagen</label>
           <input 
-            type="image"
+            type="text"
             id="image"
             value={image}
             onChange={(e) => handleImageChange(e.target.value)}
@@ -64,10 +64,10 @@ export default function productForm({
   );
 }
 
-productForm.propTypes = {
+ProductForm.propTypes = {
   name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  image: PropTypes.img.isRequired,
+  price: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   textButton: PropTypes.string.isRequired,
   titleText: PropTypes.string.isRequired,
