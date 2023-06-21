@@ -1,0 +1,36 @@
+import { useState } from 'react';
+import ProductList from './ProductList';
+import NewProduct from './createProduct'
+import logo from '../../assets/logo.png';
+import { useNavigate } from "react-router-dom";
+
+
+const AdmiProduct = () => {
+  const [showNewProduct, setShowNewProduct] = useState(false);
+  const navigate = useNavigate();
+  const handleNewProduct = () => {
+    setShowNewProduct(true);
+    navigate('/newproduct');
+  };
+
+  return (
+    <>
+      <div className="logoContainer">
+        <img src={logo} className="img-fluid" alt="Logo" />
+        <h1 className="header">Productos Burguer Queen</h1>
+      </div>
+      <div className="tableContainer">
+        <ProductList />
+
+        {!showNewProduct && (
+          <button type="button" className="btn btn-warning" onClick={handleNewProduct}>
+            Agregar nuevo producto
+          </button>
+        )}
+
+        {showNewProduct && <NewProduct />}
+      </div>
+    </>
+  );
+};
+export default AdmiProduct;

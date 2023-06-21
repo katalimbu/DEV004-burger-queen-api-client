@@ -65,6 +65,7 @@ const Edit = () => {
       password={password}
       email = {email}
       role = {role}
+      titleText={'¿Algo cambió?'}
       textButton = {'Guardar'}
       handleButtonClick = {handleButtonClick}
       handlePasswordChange = {(e) => setPassword(e.target.value)}
