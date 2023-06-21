@@ -9,6 +9,7 @@ function Login() {
   // aca se utilizan los hook (usestate), para declarar variables de estados.
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
   const navigate = useNavigate();
 
 // estas funciones son para manejar los estados del componente cuando hay cambios en el formulario. 
@@ -20,26 +21,41 @@ function Login() {
     setPassword(e.target.value);
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();// se llama este evento para evitar que la página se recargue
     // hago la peticion http para hacer el login
     axios.post('http://localhost:8080/login', {
       email: username,
-      password: password 
+      password: password, 
+      role: role
+      
     })
     .then((response) => {
       localStorage.setItem('token', response.data.accessToken);
-      navigate('/menu');
+      // navigate('/menu');
       // coloqué en este lugar los localStorage para que la información este disponible después de la autenticación. 
       localStorage.setItem('userEmail',response.data.user.email);
       localStorage.setItem('userId', response.data.user.id)
+      localStorage.setItem('userRole', response.data.user.role)
       console.log('esto es userId', response.data.user.id)
+      console.log('esto es userRol', response.data.user.role)
     
       // Si la solicitud es exitosa, el token de acceso devuelto por el servidor se muestra en la consola
       console.log(response.data.accessToken);
       // guardar token en el local storage porque lo voy a necesitar para las otras vistas 
       // redirect
-
+      if (response.data.user.role === 'admin'){
+        navigate('/Admi');
+      }
+      if (response.data.user.role === 'waiter'){
+        navigate('/menu');
+      }
+      if (response.data.user.role === 'chef'){
+        navigate('/kitchen');
+      }else{
+        alert('Error al ingresar tu usuario y contraseña')
+      }
     })
     .catch((error) => {
       // en caso de rechazar se muestra el error en la consola.
