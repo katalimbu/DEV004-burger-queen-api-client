@@ -31,7 +31,6 @@ function NavBarAdmin() {
           <ul className="dropdown-menu">
             <li><a className="dropdown-item" href="/admiproduct">Productos</a></li>
             <li><a className="dropdown-item" href="/newproduct">Crear productos</a></li>
-            <li><a className="dropdown-item" href="/editproduct/:id">Editar productos</a></li>
           </ul>
         </li>
         <li className="nav-item">
