@@ -26,3 +26,15 @@
   display: flex;
   flex-direction: row;
 }
+.btnEdit {
+  cursor: pointer;
+  margin: 10%;
+  background-color: #8cc63f; 
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 100%;
+  cursor: pointer; 
+}
+.btnEdit:hover{
+  background-color: #FDEDD5;
+}
