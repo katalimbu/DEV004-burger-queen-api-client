@@ -3,7 +3,7 @@ import ProductList from './ProductList';
 import NewProduct from './createProduct'
 import logo from '../../assets/logo.png';
 import { useNavigate } from "react-router-dom";
-
+import RouteDeny from "../error/error";
 
 const AdmiProduct = () => {
   const [showNewProduct, setShowNewProduct] = useState(false);
@@ -12,7 +12,10 @@ const AdmiProduct = () => {
     setShowNewProduct(true);
     navigate('/newproduct');
   };
-
+  let role = localStorage.getItem('userRole')
+  if(role !== "admin"){
+    return <RouteDeny />
+  }
   return (
     <>
       <div className="logoContainer">

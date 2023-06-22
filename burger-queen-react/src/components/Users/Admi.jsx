@@ -4,7 +4,7 @@ import WorkerList from './WorkerList';
 import NewUser from './createUser'
 import logo from '../../assets/logo.png';
 import { useNavigate } from "react-router-dom";
-
+import RouteDeny from "../error/error";
 
 const Admi = () => {
   const [showNewUser, setShowNewUser] = useState(false);
@@ -13,7 +13,11 @@ const Admi = () => {
     setShowNewUser(true);
     navigate('/newuser');
   };
-
+  let role = localStorage.getItem('userRole')
+  if(role !== "admin"){
+    return <RouteDeny />
+  }
+  
   return (
     <>
       <div className="logoContainer">

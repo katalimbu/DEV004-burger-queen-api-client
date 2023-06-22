@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import ProductForm from "./ProductForm";
 import { useNavigate } from "react-router-dom";
+import RouteDeny from "../error/error";
 
 const NewProduct = () => {
   const [name, setName] = useState('');
@@ -37,6 +38,11 @@ const NewProduct = () => {
       });
   };
 
+  let role = localStorage.getItem('userRole')
+  if(role !== "admin"){
+    return <RouteDeny />
+  }
+  
   return (
     <ProductForm
       name= {name}

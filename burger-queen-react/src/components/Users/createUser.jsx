@@ -3,6 +3,7 @@ import './Edit.css';
 import axios from 'axios';
 import EditForm from "./EditForm";
 import { useNavigate } from "react-router-dom";
+import RouteDeny from "../error/error";
 
 const NewUser = () => {
   
@@ -36,6 +37,11 @@ const NewUser = () => {
         alert('Hubo un error al guardar los cambios. Por favor, inténtalo nuevamente.');
       });
   };
+
+  let userRole = localStorage.getItem('userRole')
+  if(userRole !== "admin"){
+    return <RouteDeny />
+  }
 
   return (
     <EditForm

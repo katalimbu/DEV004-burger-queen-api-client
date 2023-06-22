@@ -3,6 +3,8 @@ import './Edit.css';
 import axios from 'axios';
 import { useParams } from "react-router";
 import EditForm  from "./EditForm"
+import RouteDeny from "../error/error";
+
 
 
 const Edit = () => {
@@ -60,6 +62,10 @@ const Edit = () => {
       });
   };
 
+  let userRole = localStorage.getItem('userRole')
+  if(userRole !== "admin"){
+    return <RouteDeny />
+  }
   return( 
     <EditForm  
       password={password}

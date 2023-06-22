@@ -9,7 +9,6 @@ function Login() {
   // aca se utilizan los hook (usestate), para declarar variables de estados.
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
   const navigate = useNavigate();
 
 // estas funciones son para manejar los estados del componente cuando hay cambios en el formulario. 
@@ -28,8 +27,6 @@ function Login() {
     axios.post('http://localhost:8080/login', {
       email: username,
       password: password, 
-      role: role
-      
     })
     .then((response) => {
       localStorage.setItem('token', response.data.accessToken);
@@ -48,17 +45,18 @@ function Login() {
       if (response.data.user.role === 'admin'){
         navigate('/Admi');
       }
-      if (response.data.user.role === 'waiter'){
+      else if (response.data.user.role === 'waiter'){
         navigate('/menu');
       }
-      if (response.data.user.role === 'chef'){
+      else if (response.data.user.role === 'chef'){
         navigate('/kitchen');
-      }else{
+      }
+      else {
         alert('Error al ingresar tu usuario y contraseña')
       }
     })
     .catch((error) => {
-      // en caso de rechazar se muestra el error en la consola.
+     alert('Algo anda mal, vuelve a intentarlo.')
       console.log(error);
     });
   };

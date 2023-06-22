@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../assets/logo.png';
 import './waiters.css'; 
+import RouteDeny from "../error/error";
 
 function Waiter() {
   // estado para almacenar la lista de pedidos
@@ -37,6 +38,12 @@ function Waiter() {
   if (error) {
     return <div>{error}</div>;
   }
+
+  let role = localStorage.getItem('userRole')
+  if(role === "chef"){
+    return <RouteDeny />
+  }
+
 //  se ejecuta cuando se hace clic en el botón "Listo" para entregar un pedido
   const handleButtonClick = (orderId) => { 
     const accessToken = localStorage.getItem('token');
