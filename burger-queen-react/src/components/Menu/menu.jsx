@@ -136,7 +136,11 @@ const Menu = () => {
       status: "pending",
       dataEntry: formattedDateTime,
     };
-    
+
+    if (clientName === '' || selectedOrderItems.length === 0) {
+      alert('Por favor, agrega productos a la órden antes de enviar a cocina.');
+      return;
+    }
     axios.post('http://localhost:8080/orders', orderData, {
       headers: {
         Authorization: `Bearer ${accessToken}`
@@ -182,8 +186,8 @@ const Menu = () => {
           </div>
         <div className='orderContainer'>
           <h3 className='titleContainer'>Tu órden aqui:</h3>
-          <input onChange={changeClientName} className='clientName' placeholder='nombre del cliente' name="myInput" value={clientName} />
-          <button className='saveClientName' onClick={saveClientName}>Guardar Cliente</button>
+          <input  onChange={changeClientName} className='clientName' placeholder='nombre del cliente' name="myInput" value={clientName} />
+          <button  className='saveClientName' onClick={saveClientName}>Guardar Cliente</button>
           {selectedOrderItems.map(product => (
             <div key={product.id} className='orderedProduct'>
               <h4>{product.name}</h4>
