@@ -13,7 +13,7 @@ function Login() {
 
 // estas funciones son para manejar los estados del componente cuando hay cambios en el formulario. 
   const handleUsernameChange = (e) => {
-    setUsername(e.target.value);// se ejecutan al obtener el valor atrvez del event.
+    setUsername(e.target.value);// se ejecutan al obtener el valor atraves del event.
   };
 
   const handlePasswordChange = (e) => {

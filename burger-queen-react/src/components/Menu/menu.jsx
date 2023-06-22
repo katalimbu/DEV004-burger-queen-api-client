@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import "./menu.css";
 import moment from 'moment'; 
 import RouteDeny from "../error/error";
+import LogoutButton from "../Login/Logout";
 import NavBarWaiter from '../Users/NavBarWaiter';
 // componente menu: 
 const Menu = () => {
@@ -164,11 +165,14 @@ const Menu = () => {
 // html semantico 
   return (
    <>
-  <NavBarWaiter/>
+   <NavBarWaiter/>
    <div className='containerGeneral'>
-       <h1 className='greeting'>Hola mesero!! elige tu menu:</h1>
-     <nav className='nav'>
-      <img className='logoImg' src={logo} alt="Logo" />
+      <div className='logoutbtn'>
+       <h1 className='greeting'>Hola mesero!! elige tu menu: </h1>
+       <LogoutButton />
+      </div>
+      <nav className='nav'>
+      <img className='logoImgMenu' src={logo} alt="Logo" />
       <div className='containerBtnType'>
         <button className='btnBreakfast' onClick={() => { clearOrderContainer(); setProductType('Desayuno') }}>Desayuno</button>
         <button className='btnDinner' onClick={() => { clearOrderContainer(); setProductType('Almuerzo') }}>Almuerzo/Cena</button>

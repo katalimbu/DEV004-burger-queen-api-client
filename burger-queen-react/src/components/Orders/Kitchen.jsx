@@ -5,7 +5,7 @@ import './kitchen.css';
 import moment from 'moment'; 
 import RouteDeny from "../error/error";
 import NavBarKitchen from '../Users/navBarKitchen';
-
+import LogoutButton from "../Login/Logout";
 
 function ListOrders() {// esto es un componente (los function algo)
   // estado para almacenar la lista de pedidos
@@ -104,19 +104,24 @@ function ListOrders() {// esto es un componente (los function algo)
   return (
     <>
     <NavBarKitchen/>
-    <div className='container'>
-      <div className='titleContainer'>
-      <img className='logoImg' src={logo} alt="Logo" />
-      <h1 className='title'>Estado del Pedido</h1>
+    <div className='containerKitchen'>
+      <img className='logoImgKitchen' src={logo} alt="Logo" />
+      
+      <div className='titleContainerKitchen'>
+        <h1 className='titleKitchen'>Estado del Pedido</h1>
+      </div>
+      
+      <div className='logoutkitchen'>
+        <LogoutButton />
       </div>
       <div className='kitchenForm'>
         {filterOrder.map(order => (
-          <div className='items' key={order.id}>
-            <h2 className='orderBox'>Orden Nº {order.id}</h2>
-            <p className='orderBox'>Tiempo: { moment().diff(moment(order.dataEntry),'minutes')} minutos</p>
-            <p className='orderBox'>Estado: {order.status}</p>
+          <div className='itemsKitchen' key={order.id}>
+            <h2 className='orderBoxKitchen'>Orden Nº {order.id}</h2>
+            <p className='orderBoxKitchen'>Tiempo: { moment().diff(moment(order.dataEntry),'minutes')} minutos</p>
+            <p className='orderBoxKitchen'>Estado: {order.status}</p>
             {order.products.map(item => (
-              <div className='orderBox' key={item.product.id}>
+              <div className='orderBoxKitchen' key={item.product.id}>
                 <p>Cantidad: {item.qty}</p>
                 <p>Nombre: {item.product.name}</p>
               </div>
