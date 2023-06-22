@@ -3,6 +3,7 @@ import axios from 'axios';
 import logo from '../../assets/logo.png';
 import './kitchen.css'; 
 import moment from 'moment'; 
+import RouteDeny from "../error/error";
 
 
 function ListOrders() {// esto es un componente (los function algo)
@@ -53,6 +54,12 @@ function ListOrders() {// esto es un componente (los function algo)
   if (error) {
     return <div>{error}</div>;
   }
+
+  let role = localStorage.getItem('userRole')
+  if(role === "waiter"){
+    return <RouteDeny />
+  }
+  
 //  se ejecuta cuando se hace clic en el botón "Listo" para entregar un pedido
   const handleButtonClick = (orderId) => { 
     const accessToken = localStorage.getItem('token');

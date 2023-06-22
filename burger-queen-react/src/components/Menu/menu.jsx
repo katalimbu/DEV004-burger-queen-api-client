@@ -3,6 +3,7 @@ import axios from 'axios';
 import logo from '../../assets/logo.png';
 import "./menu.css";
 import moment from 'moment'; 
+import RouteDeny from "../error/error";
 // componente menu: 
 const Menu = () => {
   // se guarda el estado que va a cambiar durante la ejecución del componente.
@@ -56,6 +57,11 @@ const Menu = () => {
 
   if (error) {
     return <div>{error}</div>;
+  }
+
+  let role = localStorage.getItem('userRole')
+  if(role === "chef"){
+    return <RouteDeny />
   }
 
   const filterProducts = products.filter(product => product.type === productType);
@@ -146,6 +152,7 @@ const Menu = () => {
         setIsLoading(false);
       });
   };
+
 // despues de h1 tiene que ir h2 ... marcadores de contenido, no solo por el estilo.
 // html semantico 
   return (
