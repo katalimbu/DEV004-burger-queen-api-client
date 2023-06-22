@@ -1,3 +1,4 @@
+import LogoutButton from "../Login/Logout";
 
 function NavBarAdmin() {
   return (
@@ -40,9 +41,9 @@ function NavBarAdmin() {
         <li className="nav-item">
           <a className="nav-link" href="/Kitchen">Cocina</a>
         </li>
-        
       </ul>
     </div>
+    <LogoutButton />
   </div>
 </nav>
     </div>

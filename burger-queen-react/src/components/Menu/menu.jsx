@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import "./menu.css";
 import moment from 'moment'; 
 import RouteDeny from "../error/error";
+import LogoutButton from "../Login/Logout";
 // componente menu: 
 const Menu = () => {
   // se guarda el estado que va a cambiar durante la ejecución del componente.
@@ -157,9 +158,12 @@ const Menu = () => {
 // html semantico 
   return (
     <div className='containerGeneral'>
-       <h1 className='greeting'>Hola mesero!! elige tu menu:</h1>
+      <div className='logoutbtn'>
+       <h1 className='greeting'>Hola mesero!! elige tu menu: </h1>
+       <LogoutButton />
+      </div>
      <nav className='nav'>
-      <img className='logoImg' src={logo} alt="Logo" />
+      <img className='logoImgMenu' src={logo} alt="Logo" />
       <div className='containerBtnType'>
         <button className='btnBreakfast' onClick={() => { clearOrderContainer(); setProductType('Desayuno') }}>Desayuno</button>
         <button className='btnDinner' onClick={() => { clearOrderContainer(); setProductType('Almuerzo') }}>Almuerzo/Cena</button>

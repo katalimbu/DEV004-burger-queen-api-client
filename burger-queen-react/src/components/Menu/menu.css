@@ -62,7 +62,7 @@
     padding: 10px;
     margin: 10px;
 }
-.logoImg {
+.logoImgMenu {
     display: flex;
     width: 20%;
     height: 20%;
@@ -135,3 +135,7 @@
     color: black;
 }
     
+.logoutbtn{
+    display: flex;
+    margin-left: 10%;
+}

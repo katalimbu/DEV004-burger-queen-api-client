@@ -3,6 +3,7 @@ import axios from 'axios';
 import logo from '../../assets/logo.png';
 import './waiters.css'; 
 import RouteDeny from "../error/error";
+import LogoutButton from "../Login/Logout";
 
 function Waiter() {
   // estado para almacenar la lista de pedidos
@@ -84,11 +85,17 @@ function Waiter() {
   const filterOrder = arrayOrders.filter(order => order.status === "delivering");
 
   return (
-    <div className='container'>
-      <div className='titleContainer'>
+    <div className='containerWaiter'>
       <img className='logoImg' src={logo} alt="Logo" />
-      <h1 className='title'>Estado de la Orden</h1>
+      
+      <div className='titleContainer'>
+        <h1 className='titleWaiter'>Estado de la Orden</h1>
       </div>
+      
+      <div className='btnlowaiter'>
+        <LogoutButton />
+      </div>
+      
       <div className='waiterForm'>
         {filterOrder.map(order => (
           <div className='items' key={order.id}>
