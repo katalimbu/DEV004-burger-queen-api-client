@@ -3,6 +3,7 @@ import axios from 'axios';
 import logo from '../../assets/logo.png';
 import './waiters.css'; 
 import RouteDeny from "../error/error";
+import NavBarWaiter from '../Users/NavBarWaiter';
 import LogoutButton from "../Login/Logout";
 
 function Waiter() {
@@ -85,6 +86,8 @@ function Waiter() {
   const filterOrder = arrayOrders.filter(order => order.status === "delivering");
 
   return (
+    <>
+    <NavBarWaiter/>
     <div className='containerWaiter'>
       <img className='logoImg' src={logo} alt="Logo" />
       
@@ -112,6 +115,7 @@ function Waiter() {
         ))}
       </div>
     </div>
+    </>
   );
 }
 

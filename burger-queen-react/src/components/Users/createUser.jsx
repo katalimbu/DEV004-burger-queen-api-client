@@ -20,6 +20,11 @@ const NewUser = () => {
   const handleButtonClick = (e) => {
     e.preventDefault();
     const accessToken = localStorage.getItem('token');
+    // acá estamos preguntando si role tiene un valor 'false' es decir que no ha sido seleccionado
+    if (!role) {
+      alert('Debes seleccionar un rol antes de guardar los cambios.');
+      return; // si es así con el return salimos tempranamente de la funcion para que no se ejecute la petición.
+    }
 
     axios.post('http://localhost:8080/users', {
       email: email,

@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import './kitchen.css'; 
 import moment from 'moment'; 
 import RouteDeny from "../error/error";
+import NavBarKitchen from '../Users/navBarKitchen';
 import LogoutButton from "../Login/Logout";
 
 function ListOrders() {// esto es un componente (los function algo)
@@ -101,6 +102,8 @@ function ListOrders() {// esto es un componente (los function algo)
 
   
   return (
+    <>
+    <NavBarKitchen/>
     <div className='containerKitchen'>
       <img className='logoImgKitchen' src={logo} alt="Logo" />
       
@@ -128,6 +131,7 @@ function ListOrders() {// esto es un componente (los function algo)
         ))}
       </div>
     </div>
+    </>
   );
 }
 
