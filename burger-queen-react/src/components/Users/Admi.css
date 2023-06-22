@@ -13,15 +13,15 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: #FDEDD5;
 }
+    
 .img-fluid{
     width: 15%;
     margin-top: 1%;
 }
 .header{
     margin-top: 5%;
-    color: #452109;
+    color: #FDEDD5;
 }
 .btn-warning{
     background-color: #FFBD59;

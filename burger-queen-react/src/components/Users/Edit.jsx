@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useParams } from "react-router";
 import EditForm  from "./EditForm"
 import RouteDeny from "../error/error";
-
+import NavBarAdmin from './NavBarAdmi';
 
 
 const Edit = () => {
@@ -67,6 +67,8 @@ const Edit = () => {
     return <RouteDeny />
   }
   return( 
+    <>
+    <NavBarAdmin/>
     <EditForm  
       password={password}
       email = {email}
@@ -78,6 +80,7 @@ const Edit = () => {
       handleRoleChange = {handleRoleChange}
       handleEmailChange = {(e) => setEmail(e.target.value)}
     />
+    </>
       )
      };
 

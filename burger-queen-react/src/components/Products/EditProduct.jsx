@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router";
 import ProductForm  from "./ProductForm"
+import NavBarAdmin from '../Users/NavBarAdmi';
 
 
 const EditProduct = () => {
@@ -63,6 +64,8 @@ const EditProduct = () => {
   };
 
   return( 
+    <>
+    <NavBarAdmin/>
     <ProductForm  
       name= {name}
       price= {price}
@@ -76,6 +79,7 @@ const EditProduct = () => {
       handleImageChange={(value) => setImage(value)}
       handleTypeChange={handleTypeChange}
     />
+    </>
   )
 };
 

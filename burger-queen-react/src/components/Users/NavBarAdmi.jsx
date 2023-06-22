@@ -1,7 +1,5 @@
-import React from 'react';
 
-
-function BasicExample() {
+function NavBarAdmin() {
   return (
     <div className='container-fluid'>
       <navBar/>
@@ -18,29 +16,29 @@ function BasicExample() {
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
+            Usuarios
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Action</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
+            <li><a className="dropdown-item" href="/Admi">Usuarios</a></li>
+            <li><a className="dropdown-item" href="/newuser">Crear usuario</a></li>
+            <li><a className="dropdown-item" href="/Edit/:id">Editar usuario</a></li>
           </ul>
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
+            Productos
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Action</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
+            <li><a className="dropdown-item" href="/admiproduct">Productos</a></li>
+            <li><a className="dropdown-item" href="/newproduct">Crear productos</a></li>
+            <li><a className="dropdown-item" href="/editproduct/:id">Editar productos</a></li>
           </ul>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Features</a>
+          <a className="nav-link" href="/menu">Menú</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Pricing</a>
+          <a className="nav-link" href="/Kitchen">Cocina</a>
         </li>
         
       </ul>
@@ -51,4 +49,4 @@ function BasicExample() {
   )
 }
 
-export default BasicExample;
+export default NavBarAdmin;
