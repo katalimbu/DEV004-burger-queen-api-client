@@ -4,7 +4,6 @@ import ReactDOM from "react-dom/client"
 import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import "./index.css"
 import Login from "./components/Login/Login.jsx"
-
 import Kitchen from "./components/Orders/Kitchen"
 import Waiter from "./components/Orders/Waiter"
 import Menu from "./components/Menu/menu"
@@ -15,9 +14,14 @@ import CreateProduct from "./components/Products/CreateProduct"
 import EditProduct from "./components/Products/EditProduct"
 import AdmiProduct from "./components/Products/AdmiProduct"
 
+
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login/>
+  },
+  {
+    path: "/login",
     element: <Login/>
   },
   {

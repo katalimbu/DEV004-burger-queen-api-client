@@ -4,6 +4,7 @@ import NewProduct from './createProduct'
 import logo from '../../assets/logo.png';
 import { useNavigate } from "react-router-dom";
 import RouteDeny from "../error/error";
+import BasicExample from "../Users/NavBarAdmi"
 
 const AdmiProduct = () => {
   const [showNewProduct, setShowNewProduct] = useState(false);
@@ -23,14 +24,13 @@ const AdmiProduct = () => {
         <h1 className="header">Productos Burguer Queen</h1>
       </div>
       <div className="tableContainer">
+       <BasicExample/>
         <ProductList />
-
         {!showNewProduct && (
           <button type="button" className="btn btn-warning" onClick={handleNewProduct}>
             Agregar nuevo producto
           </button>
         )}
-
         {showNewProduct && <NewProduct />}
       </div>
     </>
