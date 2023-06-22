@@ -19,6 +19,22 @@ const NewProduct = () => {
   const handleButtonClick = (e) => {
     e.preventDefault();
     const accessToken = localStorage.getItem('token');
+    if (!name){
+      alert('El campo de nombre esta vacío')
+      return
+    }
+    else if (!price){
+      alert('El campo de precio esta vacío')
+      return
+    }
+    if (!image){
+      alert('El campo de imagen esta vacío')
+      return
+    }
+    else if (!type){
+      alert('El campo de tipo esta vacío')
+      return
+    }
 
     axios.post('http://localhost:8080/products', {
       name: name,

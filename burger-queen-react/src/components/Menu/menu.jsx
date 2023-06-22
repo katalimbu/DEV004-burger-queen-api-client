@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import "./menu.css";
 import moment from 'moment'; 
 import RouteDeny from "../error/error";
+import NavBarWaiter from '../Users/NavBarWaiter';
 // componente menu: 
 const Menu = () => {
   // se guarda el estado que va a cambiar durante la ejecución del componente.
@@ -136,10 +137,16 @@ const Menu = () => {
       status: "pending",
       dataEntry: formattedDateTime,
     };
+
+    if (clientName === '' || selectedOrderItems.length === 0) {
+      alert('Por favor, agrega productos a la órden antes de enviar a cocina.');
+      return;
+    }
     axios.post('http://localhost:8080/orders', orderData, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
+        
     })
       .then(response => {
         alert('Tu orden ha sido enviada a cocina exitosamente');
@@ -156,7 +163,9 @@ const Menu = () => {
 // despues de h1 tiene que ir h2 ... marcadores de contenido, no solo por el estilo.
 // html semantico 
   return (
-    <div className='containerGeneral'>
+   <>
+  <NavBarWaiter/>
+   <div className='containerGeneral'>
        <h1 className='greeting'>Hola mesero!! elige tu menu:</h1>
      <nav className='nav'>
       <img className='logoImg' src={logo} alt="Logo" />
@@ -180,8 +189,8 @@ const Menu = () => {
           </div>
         <div className='orderContainer'>
           <h3 className='titleContainer'>Tu órden aqui:</h3>
-          <input onChange={changeClientName} className='clientName' placeholder='nombre del cliente' name="myInput" value={clientName} />
-          <button className='saveClientName' onClick={saveClientName}>Guardar Cliente</button>
+          <input  onChange={changeClientName} className='clientName' placeholder='nombre del cliente' name="myInput" value={clientName} />
+          <button  className='saveClientName' onClick={saveClientName}>Guardar Cliente</button>
           {selectedOrderItems.map(product => (
             <div key={product.id} className='orderedProduct'>
               <h4>{product.name}</h4>
@@ -199,6 +208,7 @@ const Menu = () => {
       </div>
       <button className='btnSend' onClick={OrderReadyToKitchen}>Enviar Órden a cocina</button>
     </div>
+    </>
   );
 };
 

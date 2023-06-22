@@ -20,6 +20,7 @@ const EditProduct = () => {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('token');
+    
     //  Se pasa un token de autorización en el encabezado de la solicitud
     axios.get(`http://localhost:8080/products/${id}`, { 
       headers: {
@@ -33,7 +34,6 @@ const EditProduct = () => {
         setImage(response.data.image);
         setType(response.data.type);
       })
-   
       .catch(error => {
         console.error(error);
       });
@@ -44,6 +44,23 @@ const EditProduct = () => {
     e.preventDefault();
 
     const accessToken = localStorage.getItem('token');
+    
+    if (!name){
+      alert('El campo de nombre esta vacío')
+      return
+    }
+    else if (!price){
+      alert('El campo de precio esta vacío')
+      return
+    }
+    if (!image){
+      alert('El campo de imagen esta vacío')
+      return
+    }
+    else if (!type){
+      alert('El campo de tipo esta vacío')
+      return
+    }
 
     axios.patch(`http://localhost:8080/products/${id}`, {
         name: name,
