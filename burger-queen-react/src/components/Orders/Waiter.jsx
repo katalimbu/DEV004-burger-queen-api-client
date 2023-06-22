@@ -3,6 +3,7 @@ import axios from 'axios';
 import logo from '../../assets/logo.png';
 import './waiters.css'; 
 import RouteDeny from "../error/error";
+import NavBarWaiter from '../Users/NavBarWaiter';
 
 function Waiter() {
   // estado para almacenar la lista de pedidos
@@ -84,6 +85,8 @@ function Waiter() {
   const filterOrder = arrayOrders.filter(order => order.status === "delivering");
 
   return (
+    <>
+    <NavBarWaiter/>
     <div className='container'>
       <div className='titleContainer'>
       <img className='logoImg' src={logo} alt="Logo" />
@@ -105,6 +108,7 @@ function Waiter() {
         ))}
       </div>
     </div>
+    </>
   );
 }
 
