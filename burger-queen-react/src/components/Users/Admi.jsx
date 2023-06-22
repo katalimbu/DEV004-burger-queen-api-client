@@ -5,6 +5,7 @@ import NewUser from './createUser'
 import logo from '../../assets/logo.png';
 import { useNavigate } from "react-router-dom";
 import RouteDeny from "../error/error";
+import NavBarAdmin from "../Users/NavBarAdmi"
 
 const Admi = () => {
   const [showNewUser, setShowNewUser] = useState(false);
@@ -20,6 +21,7 @@ const Admi = () => {
   
   return (
     <>
+    <NavBarAdmin/>
       <div className="logoContainer">
         <img src={logo} className="img-fluid" alt="Logo" />
         <h1 className="header">Trabajadores Burguer Queen</h1>

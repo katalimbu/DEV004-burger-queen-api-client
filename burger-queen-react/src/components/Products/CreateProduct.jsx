@@ -3,6 +3,7 @@ import axios from 'axios';
 import ProductForm from "./ProductForm";
 import { useNavigate } from "react-router-dom";
 import RouteDeny from "../error/error";
+import NavBarAdmin from '../Users/NavBarAdmi';
 
 const NewProduct = () => {
   const [name, setName] = useState('');
@@ -44,6 +45,8 @@ const NewProduct = () => {
   }
   
   return (
+    <>
+    <NavBarAdmin/>
     <ProductForm
       name= {name}
       price= {price}
@@ -57,6 +60,7 @@ const NewProduct = () => {
       handleImageChange={(value) => setImage(value)}
       handleTypeChange={handleTypeChange}
     />
+    </>
   );
 };
 
