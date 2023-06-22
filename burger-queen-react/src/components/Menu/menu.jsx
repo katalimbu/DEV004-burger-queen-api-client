@@ -136,10 +136,12 @@ const Menu = () => {
       status: "pending",
       dataEntry: formattedDateTime,
     };
+    
     axios.post('http://localhost:8080/orders', orderData, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
+        
     })
       .then(response => {
         alert('Tu orden ha sido enviada a cocina exitosamente');

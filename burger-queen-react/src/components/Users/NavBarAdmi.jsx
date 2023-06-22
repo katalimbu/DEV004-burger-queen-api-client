@@ -21,7 +21,6 @@ function NavBarAdmin() {
           <ul className="dropdown-menu">
             <li><a className="dropdown-item" href="/Admi">Usuarios</a></li>
             <li><a className="dropdown-item" href="/newuser">Crear usuario</a></li>
-            <li><a className="dropdown-item" href="/Edit/:id">Editar usuario</a></li>
           </ul>
         </li>
         <li className="nav-item dropdown">

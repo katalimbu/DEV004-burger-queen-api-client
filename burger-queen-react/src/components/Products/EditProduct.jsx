@@ -34,7 +34,6 @@ const EditProduct = () => {
         setImage(response.data.image);
         setType(response.data.type);
       })
-   
       .catch(error => {
         console.error(error);
       });
