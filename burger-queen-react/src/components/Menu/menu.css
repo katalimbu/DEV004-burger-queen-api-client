@@ -10,6 +10,7 @@
 .greeting {
     color:#FDEDD5;
     font-weight: 600;
+    margin:2%
 }
 .containerGeneral {
     display:flex;
@@ -34,15 +35,14 @@
 }
 .menuAndOrderContainer{
     background-color:#F6CF95;
-    width: 70%;
+    width: fit-content;
     height: fit-content;
     display: grid;
-    align-items: center;
+    justify-items: center;
     grid-template-columns:2fr 2fr;
     min-height: fit-content;
-    padding: 5%;
+    padding: 1%;
     margin:2%;
-    align-content: center;
     border-radius: 20px;
    
 }
@@ -50,7 +50,7 @@
 .containerItems,.orderContainer {
     background-color: #FDEDD5;
     min-width:fit-content;
-    min-height:100%;
+    min-height:fit-content;
     margin: 5%;
     display:flex;
     flex-direction: column;
