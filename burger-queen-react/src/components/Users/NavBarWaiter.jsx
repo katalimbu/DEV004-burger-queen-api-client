@@ -1,3 +1,5 @@
+import LogoutButton from "../Login/Logout";
+
 function NavBarWaiter() {
     return (
       <div className='container-fluid'>
@@ -19,9 +21,9 @@ function NavBarWaiter() {
           <li className="nav-item">
             <a className="nav-link" href="/waiter">órdenes</a>
           </li>
-          
         </ul>
       </div>
+      <LogoutButton />
     </div>
   </nav>
       </div>

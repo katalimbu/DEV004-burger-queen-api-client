@@ -1,3 +1,4 @@
+import LogoutButton from "../Login/Logout";
 function NavBarKitchen() {
     return (
       <div className='container-fluid'>
@@ -14,6 +15,7 @@ function NavBarKitchen() {
           </li>
         </ul>
       </div>
+      <LogoutButton />
     </div>
   </nav>
       </div>

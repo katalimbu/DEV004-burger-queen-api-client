@@ -95,9 +95,7 @@ function Waiter() {
         <h1 className='titleWaiter'>Estado de la Orden</h1>
       </div>
       
-      <div className='btnlowaiter'>
-        <LogoutButton />
-      </div>
+     
       
       <div className='waiterForm'>
         {filterOrder.map(order => (
