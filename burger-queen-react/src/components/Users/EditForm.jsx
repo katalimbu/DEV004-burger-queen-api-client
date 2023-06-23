@@ -18,7 +18,7 @@ export default function EditForm({
         <img src={logo} className="logoEdit" alt="Logo" />
       </div>
 
-      <div className='container'>
+      <div className='containerEdit'>
         <h1 className="editheader">{titleText}</h1>
 
         <form className='formEdit' onSubmit={handleButtonClick}>
