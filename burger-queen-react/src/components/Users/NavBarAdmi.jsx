@@ -34,10 +34,10 @@ function NavBarAdmin() {
           </ul>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/menu">Menú</a>
+          <a className="nav-link" href="/menu">Mesero</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/Kitchen">Cocina</a>
+          <a className="nav-link" href="/Kitchen">Chef</a>
         </li>
       </ul>
     </div>
