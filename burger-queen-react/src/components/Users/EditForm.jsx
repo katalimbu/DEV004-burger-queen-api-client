@@ -32,7 +32,7 @@ export default function EditForm({
 
           <label>Cargo</label>
           <select name="role" onChange={handleRoleChange} value={role}>
-          <option value="elige tu rol">Elige el rol </option>
+          <option value="">Elige el rol </option> 
             <option value="admin">Administrador</option>
             <option value="waiter">Mesero</option>
             <option value="chef">Chef</option>

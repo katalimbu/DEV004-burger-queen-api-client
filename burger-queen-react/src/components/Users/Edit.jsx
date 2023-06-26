@@ -44,7 +44,10 @@ const Edit = () => {
     e.preventDefault();
 
     const accessToken = localStorage.getItem('token');
-
+    if (!role) {
+      alert('Debes seleccionar un rol antes de guardar los cambios.');
+      return; // si es así con el return salimos tempranamente de la funcion para que no se ejecute la petición.
+    }
     axios.patch(`http://localhost:8080/users/${id}`, {
       email: email,
       role: role,
