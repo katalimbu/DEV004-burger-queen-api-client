@@ -1,6 +1,4 @@
-*{
-    font-family: 'Signika' ;
-  }
+
 .containerWaiters{
   display:flex;
   align-items: center;
@@ -13,7 +11,7 @@
   padding: 50px;
   border-radius: 0 0 20px 20px;
 }
-.titleContainer{
+.titleContainerWaiter{
   display: flex;
   flex-direction: row;
   background-color: #FFBD59;

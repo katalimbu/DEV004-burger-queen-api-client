@@ -110,10 +110,6 @@ function ListOrders() {// esto es un componente (los function algo)
       <div className='titleContainerKitchen'>
         <h1 className='titleKitchen'>Estado del Pedido</h1>
       </div>
-      
-      <div className='logoutkitchen'>
-        <LogoutButton />
-      </div>
       <div className='kitchenForm'>
         {filterOrder.map(order => (
           <div className='itemsKitchen' key={order.id}>

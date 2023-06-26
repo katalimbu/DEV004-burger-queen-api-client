@@ -91,13 +91,11 @@ function Waiter() {
     <div className='containerWaiter'>
       <img className='logoImg' src={logo} alt="Logo" />
       
-      <div className='titleContainer'>
+      <div className='titleContainerWaiter'>
         <h1 className='titleWaiter'>Estado de la Orden</h1>
       </div>
       
-      <div className='btnlowaiter'>
-        <LogoutButton />
-      </div>
+     
       
       <div className='waiterForm'>
         {filterOrder.map(order => (
