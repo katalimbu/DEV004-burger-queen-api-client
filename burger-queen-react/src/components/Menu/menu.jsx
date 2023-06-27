@@ -31,13 +31,13 @@ const Menu = () => {
   const accessToken = localStorage.getItem('token');
 // axios: es posible no repetir header. 
   const listProducts = () => {
-    axios.get('http://localhost:8080/products', {
+    axios.get('https://burger-queen-api-mock-production-c642.up.railway.app/products', {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
     })
       .then(response => {
-        console.log('esto es response.data', response.data);
+        console.log('esto es response.data!!', response.data);
         setProducts(response.data);
         setIsLoading(false);
       })
@@ -142,7 +142,7 @@ const Menu = () => {
       alert('Por favor, agrega productos a la órden antes de enviar a cocina.');
       return;
     }
-    axios.post('http://localhost:8080/orders', orderData, {
+    axios.post('https://burger-queen-api-mock-production-c642.up.railway.app/orders', orderData, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }

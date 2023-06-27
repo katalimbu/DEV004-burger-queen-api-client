@@ -22,7 +22,7 @@ const Edit = () => {
   useEffect(() => {
     const accessToken = localStorage.getItem('token');
     //  Se pasa un token de autorización en el encabezado de la solicitud
-    axios.get(`http://localhost:8080/users/${id}`, { 
+    axios.get(`https://burger-queen-api-mock-production-c642.up.railway.app/users/${id}`, { 
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -48,7 +48,7 @@ const Edit = () => {
       alert('Debes seleccionar un rol antes de guardar los cambios.');
       return; // si es así con el return salimos tempranamente de la funcion para que no se ejecute la petición.
     }
-    axios.patch(`http://localhost:8080/users/${id}`, {
+    axios.patch(`https://burger-queen-api-mock-production-c642.up.railway.app/users/${id}`, {
       email: email,
       role: role,
       password: password

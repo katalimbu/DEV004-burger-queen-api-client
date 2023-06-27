@@ -10,7 +10,7 @@ const WorkerList = () => {
   const getWorkers = async () => {
     try {
       const accessToken = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8080/users', {
+      const response = await axios.get('https://burger-queen-api-mock-production-c642.up.railway.app/users', {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
@@ -28,7 +28,7 @@ const WorkerList = () => {
   const deleteWorkers = (id) => {
     const accessToken = localStorage.getItem('token');
     
-    axios.delete(`http://localhost:8080/users/${id}`, {
+    axios.delete(`https://burger-queen-api-mock-production-c642.up.railway.app/users/${id}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }

@@ -26,7 +26,7 @@ const NewUser = () => {
       return; // si es así con el return salimos tempranamente de la funcion para que no se ejecute la petición.
     }
 
-    axios.post('http://localhost:8080/users', {
+    axios.post('https://burger-queen-api-mock-production-c642.up.railway.app/users', {
       email: email,
       role: role,
       password: password

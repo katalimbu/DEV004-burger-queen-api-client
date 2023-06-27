@@ -36,7 +36,7 @@ const NewProduct = () => {
       return
     }
 
-    axios.post('http://localhost:8080/products', {
+    axios.post('https://burger-queen-api-mock-production-c642.up.railway.app/products', {
       name: name,
       price: price,
       image: image,

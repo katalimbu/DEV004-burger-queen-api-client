@@ -9,7 +9,7 @@ import { MemoryRouter } from 'react-router-dom';
 const mockGet = () => {
   const mock = new MockAdapter(axios);
   mock
-    .onGet('http://localhost:8080/orders')
+    .onGet('https://burger-queen-api-mock-production-c642.up.railway.app/orders')
     .reply(200, [
       {
         id: 2324,
@@ -88,7 +88,7 @@ afterEach(() => {
 const mockAdapter = new MockAdapter(axios);
 
 // Configura una respuesta mock para la solicitud PATCH
-mockAdapter.onPatch('http://localhost:8080/orders').reply(200, {
+mockAdapter.onPatch('https://burger-queen-api-mock-production-c642.up.railway.app/orders').reply(200, {
   status: 'delivering',
 });
 
@@ -171,7 +171,7 @@ describe('Kitchen', () => {
     });
   });
   it('manejar errores de axios get', async () => {
-    mockAdapter.onGet('http://localhost:8080/orders').reply(()=>{
+    mockAdapter.onGet('https://burger-queen-api-mock-production-c642.up.railway.app/orders').reply(()=>{
       throw('error')
     });
 

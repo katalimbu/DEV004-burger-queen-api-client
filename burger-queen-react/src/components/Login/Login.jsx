@@ -24,7 +24,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();// se llama este evento para evitar que la página se recargue
     // hago la peticion http para hacer el login
-    axios.post('http://localhost:8080/login', {
+    axios.post('https://burger-queen-api-mock-production-c642.up.railway.app/login', {
       email: username,
       password: password, 
     })
