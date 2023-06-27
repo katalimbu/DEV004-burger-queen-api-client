@@ -1,6 +1,7 @@
 import axios from 'axios';
 import ProductTable from "./ProductTable";
 import { useState, useEffect } from 'react';
+
 // estos son comoponente shijos 
 const ProductList = () => {
   const [arrayProducts, setArrayProducts] = useState([]);
@@ -10,7 +11,7 @@ const ProductList = () => {
   const getProducts = async () => {
     try {
       const accessToken = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8080/products', {
+      const response = await axios.get('https://burger-queen-api-mock-production-c642.up.railway.app/products', {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
@@ -28,7 +29,7 @@ const ProductList = () => {
   const deleteProducts = (id) => {
     const accessToken = localStorage.getItem('token');
     
-    axios.delete(`http://localhost:8080/products/${id}`, {
+    axios.delete(`https://burger-queen-api-mock-production-c642.up.railway.app/products/${id}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }

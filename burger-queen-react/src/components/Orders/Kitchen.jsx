@@ -18,7 +18,7 @@ function ListOrders() {// esto es un componente (los function algo)
   const getOrders = () =>{
     const accessToken = localStorage.getItem('token');
     //  Se pasa un token de autorización en el encabezado de la solicitud
-    axios.get('http://localhost:8080/orders', { // para obtener la lista de pedidos
+    axios.get('https://burger-queen-api-mock-production-c642.up.railway.app/orders', { // para obtener la lista de pedidos
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -65,7 +65,7 @@ function ListOrders() {// esto es un componente (los function algo)
   const handleButtonClick = (orderId) => { 
     const accessToken = localStorage.getItem('token');
 // para actualizar el estado del pedido 
-    axios.patch(`http://localhost:8080/orders/${orderId}`, {
+    axios.patch(`https://burger-queen-api-mock-production-c642.up.railway.app/orders/${orderId}`, {
       status: "delivering", // cambiar a delivering para la vista del mesero.
     }, {
       headers: {

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from "react-router";
 import ProductForm  from "./ProductForm"
 import NavBarAdmin from '../Users/NavBarAdmi';
+import { useNavigate } from "react-router-dom";
 
 
 const EditProduct = () => {
@@ -12,6 +13,7 @@ const EditProduct = () => {
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
   const [type, setType] = useState('');
+  const navigate = useNavigate();
   
 
   const handleTypeChange = (e) => {
@@ -22,7 +24,7 @@ const EditProduct = () => {
     const accessToken = localStorage.getItem('token');
     
     //  Se pasa un token de autorización en el encabezado de la solicitud
-    axios.get(`http://localhost:8080/products/${id}`, { 
+    axios.get(`https://burger-queen-api-mock-production-c642.up.railway.app/products/${id}`, { 
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
@@ -62,7 +64,7 @@ const EditProduct = () => {
       return
     }
 
-    axios.patch(`http://localhost:8080/products/${id}`, {
+    axios.patch(`https://burger-queen-api-mock-production-c642.up.railway.app/products/${id}`, {
         name: name,
         price: price,
         image: image,
@@ -74,6 +76,7 @@ const EditProduct = () => {
     })
       .then(() => {
         alert('Los cambios han sido guardado con éxito');
+        navigate('/AdmiProduct');
       })
       .catch(() => {
         alert('Hubo un error al guardar los cambios. Por favor, inténtalo nuevamente.');
