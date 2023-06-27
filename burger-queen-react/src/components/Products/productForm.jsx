@@ -53,8 +53,8 @@ export default function ProductForm({
             <label>Tipo</label>
             <select name="type" onChange={handleTypeChange} value={type}>
             <option value="elige">Elige el tipo </option>
-                <option value="Almuerzo">Desayuno</option>
-                <option value="cena">Almuerzo</option>
+                <option value="Desayuno">Desayuno</option>
+                <option value="Almuerzo">Almuerzo</option>
             </select>     
 
           <button className='btnEdit' type="submit">{textButton}</button>
