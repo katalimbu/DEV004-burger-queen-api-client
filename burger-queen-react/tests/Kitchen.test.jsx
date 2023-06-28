@@ -81,10 +81,6 @@ const mockGet = () => {
     ]);
 };
 
-afterEach(() => {
-  vi.useRealTimers();
-});
-
 const mockAdapter = new MockAdapter(axios);
 
 // Configura una respuesta mock para la solicitud PATCH
@@ -92,21 +88,17 @@ mockAdapter.onPatch('https://burger-queen-api-mock-production-c642.up.railway.ap
   status: 'delivering',
 });
 
-// const findByText = (container, text) => {
-//   const elements = Array.from(container.querySelectorAll('*'));
-//   const element = elements.find(el => el.textContent === text);
-//   if (element) {
-//     return element;
-//   }
-//   throw new Error(`Unable to find an element with the text: ${text}`);
-// };
+afterEach(() => {
+  vi.useRealTimers();
+});
+
 describe('Kitchen', () => {
   it('renders title', async() => {
     mockGet();
     render(
       <MemoryRouter>
-    <Kitchen />
-    </MemoryRouter>
+        <Kitchen />
+      </MemoryRouter>
     );
     await waitFor(() => {
       expect(screen.getByText('Estado del Pedido')).toBeInTheDocument();
@@ -120,8 +112,8 @@ describe('Kitchen', () => {
     mockGet();
     render(
       <MemoryRouter>
-    <Kitchen />
-    </MemoryRouter>
+        <Kitchen />
+      </MemoryRouter>
     );
     vi.advanceTimersByTime(40000);
 
@@ -170,62 +162,21 @@ describe('Kitchen', () => {
       fireEvent.click(readyButtonElement);
     });
   });
+
   it('manejar errores de axios get', async () => {
-    mockAdapter.onGet('https://burger-queen-api-mock-production-c642.up.railway.app/orders').reply(()=>{
-      throw('error')
-    });
+    const mock = new MockAdapter(axios);
+    mock.onGet('https://burger-queen-api-mock-production-c642.up.railway.app/orders').reply(500);
 
     render(
       <MemoryRouter>
-    <Kitchen />
-    </MemoryRouter>
+        <Kitchen />
+      </MemoryRouter>
     );
 
     await waitFor(() => {
       expect(screen.getByText('Error al obtener los datos')).toBeTruthy();
     });
   });
-
-  // it('manejo errores peticion patch', async () => {
-  //   mockAdapter.onPatch('http://localhost:8080/orders').reply(500);
-  
-  //   render(<Kitchen />);
-  
-  //   await waitFor(async () => {
-  //     const button = await screen.getByText('Listo', {}, { timeout: 5000 });
-  //     await fireEvent.click(button);
-  //   });
-    
-  
-  //   await waitFor(() => {
-  //     expect(screen.getByText('Error al actualizar el pedido')).toBeTruthy();
-  //   });
-  
-  // });
-  
-  
-  // it('no muestra ningin mensaje por pedido', async () => {
-  //   mockAdapter.onGet('http://localhost:8080/orders').reply(200, []);
-
-  //   render(<Kitchen />);
-
-  //   await waitFor(() => {
-  //     const noOrdersMessage = screen.queryByText('No hay pedidos');
-  //     expect(noOrdersMessage).toBeNull();
-  //   });
-  // });
-
-  // it('displays loading message', async () => {
-  //   mockAdapter.onGet('http://localhost:8080/orders').reply(200, []);
-  
-  //   render(<Kitchen />);
-  
-  //   await screen.findByText((content, element) => {
-  //     return content.includes('Cargando pedidos') && element.tagName.toLowerCase() === 'div';
-  //   });
-  // });
-  
-
 });
 
 

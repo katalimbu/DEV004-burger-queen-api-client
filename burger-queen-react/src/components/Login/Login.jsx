@@ -35,11 +35,8 @@ function Login() {
       localStorage.setItem('userEmail',response.data.user.email);
       localStorage.setItem('userId', response.data.user.id)
       localStorage.setItem('userRole', response.data.user.role)
-      console.log('esto es userId', response.data.user.id)
-      console.log('esto es userRol', response.data.user.role)
     
       // Si la solicitud es exitosa, el token de acceso devuelto por el servidor se muestra en la consola
-      console.log(response.data.accessToken);
       // guardar token en el local storage porque lo voy a necesitar para las otras vistas 
       // redirect
       if (response.data.user.role === 'admin'){
@@ -55,12 +52,10 @@ function Login() {
         alert('Error al ingresar tu usuario y contraseña')
       }
     })
-    .catch((error) => {
-     alert('Algo anda mal, vuelve a intentarlo.')
-      console.log(error);
+    .catch(() => {
+      alert('Algo anda mal, vuelve a intentarlo.')
     });
   };
-  console.log("username", username);
   // aca es lo que se renderiza para armar la interfaz de usuario
   return (
     <>
