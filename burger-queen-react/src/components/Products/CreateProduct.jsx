@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import ProductForm from "./ProductForm";
+import ProductForm from "./productForm";
 import { useNavigate } from "react-router-dom";
 import RouteDeny from "../error/error";
 import NavBarAdmin from '../Users/NavBarAdmi';
