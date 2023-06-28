@@ -4,7 +4,6 @@ import logo from '../../assets/logo.png';
 import './waiters.css'; 
 import RouteDeny from "../error/error";
 import NavBarWaiter from '../Users/NavBarWaiter';
-import LogoutButton from "../Login/Logout";
 
 function Waiter() {
   // estado para almacenar la lista de pedidos
@@ -73,10 +72,8 @@ function Waiter() {
           setArrayOrders(updatedOrders);
           // nueva lista de pedidos actualizada, excluyendo el pedido entregado
         }
-        console.log(response);
       })
-      .catch(error => {
-        console.error(error);
+      .catch(() => {
         setError('Error al entregar el pedido');
         // Mensaje de error al entregar el pedido
         alert('Hubo un error al entregar el pedido. Por favor, inténtalo nuevamente.');
