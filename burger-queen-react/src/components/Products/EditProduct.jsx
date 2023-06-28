@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router";
-import ProductForm  from "./ProductForm"
+import ProductForm  from "./productForm"
 import NavBarAdmin from '../Users/NavBarAdmi';
 import { useNavigate } from "react-router-dom";
 

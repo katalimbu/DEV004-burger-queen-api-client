@@ -1,5 +1,5 @@
 import axios from 'axios';
-import WorkersTable from "./workersTable";
+import WorkersTable from "./WorkersTable";
 import { useState, useEffect } from 'react';
 // estos son comoponente shijos 
 const WorkerList = () => {
