@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import LogoutButton from "../Login/Logout";
 function NavBarKitchen() {
     return (
@@ -11,7 +13,7 @@ function NavBarKitchen() {
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="/login">Login</a>
+            <Link className="nav-link active" to="/login">Login</Link>
           </li>
         </ul>
       </div>

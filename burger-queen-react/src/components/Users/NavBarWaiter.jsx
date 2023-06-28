@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LogoutButton from "../Login/Logout";
 
 function NavBarWaiter() {
@@ -13,13 +14,13 @@ function NavBarWaiter() {
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="/login">Login</a>
+            <Link className="nav-link active" to="/login">Login</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/menu">Menú</a>
+            <Link className="nav-link" to="/menu">Menú</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/waiter">órdenes</a>
+            <Link className="nav-link" to="/waiter">órdenes</Link>
           </li>
         </ul>
       </div>

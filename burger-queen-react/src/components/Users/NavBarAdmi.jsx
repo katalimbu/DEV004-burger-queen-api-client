@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LogoutButton from "../Login/Logout";
 
 function NavBarAdmin() {
@@ -13,15 +14,15 @@ function NavBarAdmin() {
     <div className="collapse navbar-collapse" id="navbarNavDropdown">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/login">Login</a>
+          <Link className="nav-link active" to="/login">Login</Link>
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Usuarios
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="/Admi">Usuarios</a></li>
-            <li><a className="dropdown-item" href="/newuser">Crear usuario</a></li>
+            <Link className="dropdown-item" to="/Admi">Usuarios</Link>
+            <Link className="dropdown-item" to="/newuser">Crear usuario</Link>
           </ul>
         </li>
         <li className="nav-item dropdown">
@@ -29,15 +30,15 @@ function NavBarAdmin() {
             Productos
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="/admiproduct">Productos</a></li>
-            <li><a className="dropdown-item" href="/newproduct">Crear productos</a></li>
+            <Link className="dropdown-item" to="/admiproduct">Productos</Link>
+            <Link className="dropdown-item" to="/newproduct">Crear productos</Link>
           </ul>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/menu">Mesero</a>
+          <Link className="nav-link" to="/menu">Menú</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/Kitchen">Chef</a>
+          <Link className="nav-link" to="/Kitchen">Chef</Link>
         </li>
       </ul>
     </div>
