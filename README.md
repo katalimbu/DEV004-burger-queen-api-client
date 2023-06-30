@@ -476,6 +476,9 @@ hasta hoy.
 ***
 
 #### [Historia de usuario 1] Mesero/a debe poder ingresar al sistema, si el admin ya le ha asignado credenciales
+![login](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/d2db332e-f101-4db8-bfb2-5761bbd6bf4d)
+
+
 
 Yo como meserx quiero poder ingresar al sistema de pedidos.
 
@@ -489,22 +492,16 @@ Lo que debe ocurrir para que se satisfagan las necesidades del usuario.
   con la información ingresada.
 * Ingresar al sistema de pedidos si las crendenciales son correctas.
 
-##### Definición de terminado
-
-Lo acordado que debe ocurrir para decir que la historia está terminada.
-
-* Debes haber recibido _code review_ de al menos una compañera.
-* Haces _test_ unitarios y, además, has testeado tu producto manualmente.
-* Hiciste _tests_ de usabilidad e incorporaste el _feedback_ del usuario.
-* Desplegaste tu aplicación y has etiquetado tu versión (git tag).
-
-***
 
 #### [Historia de usuario 2] Mesero/a debe poder tomar pedido de cliente/a
 
 Yo como meserx quiero tomar el pedido de unx clientx para no depender de mi mala
 memoria, para saber cuánto cobrar, y enviarlo a la cocina para evitar errores y
 que se puedan ir preparando en orden.
+
+![menu](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/eab68bb4-7dd1-4507-b001-272f7399924e)
+
+
 
 ##### Criterios de aceptación
 
@@ -534,6 +531,9 @@ Yo como jefx de cocina quiero ver los pedidos de lxs clientxs en orden y
 marcar cuáles están listos para saber qué se debe cocinar y avisar a lxs meserxs
 que un pedido está listo para servirlo a un clientx.
 
+![kitchen](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/c6a243bc-4614-416e-a7d7-1928c64e541c)
+
+
 ##### Criterios de aceptación
 
 * Ver los pedidos ordenados según se van haciendo.
@@ -554,6 +554,9 @@ que un pedido está listo para servirlo a un clientx.
 
 Yo como meserx quiero ver los pedidos que están preparados para entregarlos
 rápidamente a lxs clientxs que las hicieron.
+
+![orders](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/296921fe-00d5-4c3e-b909-a4be94d1f034)
+
 
 ##### Criterios de aceptación
 
@@ -576,12 +579,18 @@ rápidamente a lxs clientxs que las hicieron.
 Yo como administrador(a) de tienda quiero gestionar a los usuarios de
 la plataforma para mantener actualizado la informacion de mis trabajadorxs.
 
-##### Criterios de aceptación
-
 * Ver listado de trabajadorxs.
+![listUser](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/5a798f9a-46b5-4cb2-9728-32931d2a6ed2)
+
 * Agregar trabajadorxs.
-* Eliminar trabajadoxs.
+![newUser](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/906cbf81-2ebf-42eb-ad32-53930e0e38d6)
+
 * Actualizar datos de trabajadorxs.
+![editUser](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/d05c9d48-0568-429c-a80a-059008c45bfe)
+
+* Eliminar trabajadoxs.
+![deleteUser](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/fbb287d3-35d8-4ed7-a39b-c5ef82bbf792)
+
 
 ##### Definición de terminado
 
@@ -597,12 +606,18 @@ la plataforma para mantener actualizado la informacion de mis trabajadorxs.
 Yo como administrador(a) de tienda quiero gestionar los productos
 para mantener actualizado el menú.
 
-##### Criterios de aceptación
-
 * Ver listado de productos.
+![listProduct](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/904ce8b6-59cf-4523-a33f-589a6889cea0)
+
 * Agregar productos.
-* Eliminar productos.
+![newProduct](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/43b7db49-0d42-42e1-a7ce-8b544ebee2ed)
+
 * Actualizar datos de productos.
+![editProduct](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/550aaa4f-260d-4691-be4d-e6bba3d5c8f6)
+
+* Eliminar productos.
+![deleteProduct](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/5b270b79-3c9e-4042-9210-814448bb3d68)
+
 
 ##### Definición de terminado
 
@@ -612,6 +627,29 @@ para mantener actualizado el menú.
 * Desplegaste tu aplicación y has etiquetado tu versión (git tag).
 
 ***
+
+## 7. Prototipos de alta fidelidad
+
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/ed64309a-139b-4efa-b8c8-95d86f366c98" width=33% height=33%>
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/6f265928-957f-4977-90e5-8a6bad96c18c" width=33% height=33%>
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/52eea5a4-5e48-42e3-b83a-2372ec1fce3e" width=33% height=33%>
+
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/0a3785c5-d3f4-41cc-a7b1-f3210198ff53" width=33% height=33%>
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/444b8c02-2c9d-4fe2-9f9a-b100f5d6d033" width=33% height=33%>
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/440d84ab-0407-421d-95cd-6fd8ccd9d535" width=33% height=33%>
+
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/232c435a-d892-441d-931e-56f1dd53bf7a" width=33% height=33%>
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/dbd3f665-a0cf-4e5d-b07a-6d1d6aafa9bb" width=33% height=33%>
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/71e4fdb8-30f2-4a8c-ba38-96351d300af5" width=33% height=33%>
+
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/2c8e2999-3151-4305-9dc9-ee9187b44b39" width=33% height=33%>
+<img src="https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/83a54c7d-11bf-41a6-9802-ffd263205350" width=33% height=33%>
+
+
+
+## 7. Tests
+![test](https://github.com/katalimbu/DEV004-burger-queen-api-client/assets/122368809/b2d14f7c-91ac-4e05-bafb-8a0530e8c77b)
+
 
 ## 6. Despliegue
 
